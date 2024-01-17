@@ -21,20 +21,18 @@
 #  THE SOFTWARE.
 
 from enum import Enum
-from typing import List
-from typing import Dict
-from typing import Optional
+from typing import Dict, List, Optional
 
 try:
     from typing import Self
 except ImportError:
     from typing_extensions import Self
 
-from .task import Task
 from ..models import ModelFactory
-from ..prompts import PromptFactory
 from ..parsers import ParserFactory
+from ..prompts import PromptFactory
 from ..selector import SelectorFactory
+from .task import Task
 
 
 class TaskTypes(str, Enum):
@@ -46,6 +44,7 @@ class TaskTypes(str, Enum):
     QA: str = "qa"
     CLASSIFICATION: str = "classification"
     CODE_GENERATION: str = "code-generation"
+    CODE_EXPLAIN: str = "code-explain"
 
 
 class TaskBuilder:
