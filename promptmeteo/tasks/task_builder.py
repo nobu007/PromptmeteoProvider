@@ -45,6 +45,7 @@ class TaskTypes(str, Enum):
     CLASSIFICATION: str = "classification"
     CODE_GENERATION: str = "code-generation"
     CODE_EXPLAIN: str = "code-explain"
+    ADD: str = "add"
 
 
 class TaskBuilder:

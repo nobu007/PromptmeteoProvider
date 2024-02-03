@@ -30,6 +30,7 @@ class ModelTypes(str, Enum):
 
     YkaCodeGen: str = "yka-llm_code-gen"
     YkaCodeExplain: str = "yka-llm"
+    YkaDocument: str = "yka-llm_document"
 
     # TextDavinci003: str = "text-davinci-003"
 
@@ -51,14 +52,14 @@ class ModelParams(Enum):
     Model Parameters.
     """
 
-    # class YkaCodeGen:
+    class YkaCodeGen:
 
-    #     """
-    #     Default parameters for code-generation model.
-    #     """
+        """
+        Default parameters for code-generation model.
+        """
 
-    #     model_task: str = "code-generation"
-    #     model_kwargs = {"temperature": 0.4, "max_tokens": 256, "max_retries": 3}
+        model_task: str = "code-generation"
+        model_kwargs = {"temperature": 0.4, "max_tokens": 256, "max_retries": 3}
 
     class YkaCodeExplain:
 
@@ -67,6 +68,15 @@ class ModelParams(Enum):
         """
 
         model_task: str = "code-explain"
+        model_kwargs = {"temperature": 0.4, "max_tokens": 256, "max_retries": 3}
+
+    class YkaDocument:
+
+        """
+        Default parameters for code-explain model.
+        """
+
+        model_task: str = "document-add"
         model_kwargs = {"temperature": 0.4, "max_tokens": 256, "max_retries": 3}
 
 

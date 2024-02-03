@@ -39,6 +39,7 @@ class ParserTypes(str, Enum):
     PARSER_3: str = "qa"
     PARSER_4: str = "code-generation"
     PARSER_5: str = "code-explain"
+    PARSER_6: str = "add"
 
 
 class ParserFactory:
@@ -71,6 +72,9 @@ class ParserFactory:
             parser_cls = DummyParser
 
         elif task_type == ParserTypes.PARSER_5.value:
+            parser_cls = DummyParser
+
+        elif task_type == ParserTypes.PARSER_6.value:
             parser_cls = DummyParser
 
         else:
