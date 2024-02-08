@@ -30,7 +30,6 @@ from ..selector import BaseSelector
 
 
 class Task:
-
     """
     Base Task interface.
     """
@@ -159,18 +158,12 @@ class Task:
         no_examples_prompt = PromptTemplate.from_template("{__INPUT__}")
 
         if self._language == "es":
-            no_examples_prompt = PromptTemplate.from_template(
-                "Texto de entrada: {__INPUT__}"
-            )
+            no_examples_prompt = PromptTemplate.from_template("Texto de entrada: {__INPUT__}")
 
         if self._language == "en":
-            no_examples_prompt = PromptTemplate.from_template(
-                "Input text: {__INPUT__}"
-            )
+            no_examples_prompt = PromptTemplate.from_template("Input text: {__INPUT__}")
 
-        examples_prompt = (
-            self.selector.run() if self.selector else no_examples_prompt
-        )
+        examples_prompt = self.selector.run() if self.selector else no_examples_prompt
 
         return PipelinePromptTemplate(
             final_prompt=PromptTemplate.from_template(
@@ -208,4 +201,5 @@ class Task:
             print("\n\nMODEL OUTPUT\n\n", output)
             print("\n\nPARSE RESULT\n\n", result)
 
-        return result
+        result_prompt = (result, prompt)
+        return result_prompt
