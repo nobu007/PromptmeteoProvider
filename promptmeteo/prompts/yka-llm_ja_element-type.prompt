@@ -15,6 +15,8 @@ claim_endは次の要素で判断してください。
     {__PROMPT_DOMAIN__}
     {__PROMPT_LABELS__}
 
+    {__PROMPT_DETAIL__}
+
     {__CHAIN_THOUGHT__}
     {__ANSWER_FORMAT__}"
 

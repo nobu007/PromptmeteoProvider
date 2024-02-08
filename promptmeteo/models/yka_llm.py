@@ -9,21 +9,16 @@ from langchain.llms import VertexAI
 from .base import BaseModel
 
 # commonモジュールをインポートする
-COMMON_MOD_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "../common")
-)
+COMMON_MOD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../common"))
 sys.path.append(COMMON_MOD_DIR)
 
-LIB_DECORATOR_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "lib/document_decorator")
-)
+LIB_DECORATOR_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "lib/document_decorator"))
 sys.path.append(LIB_DECORATOR_DIR)
 
 from yka_langchain import yka_langchain_raw
 
 
 class ModelTypes(str, Enum):
-
     """
     Enum of available model types.
     """
@@ -47,13 +42,11 @@ class ModelTypes(str, Enum):
 
 
 class ModelParams(Enum):
-
     """
     Model Parameters.
     """
 
     class YkaCodeGen:
-
         """
         Default parameters for code-generation model.
         """
@@ -62,7 +55,6 @@ class ModelParams(Enum):
         model_kwargs = {"temperature": 0.4, "max_tokens": 256, "max_retries": 3}
 
     class YkaCodeExplain:
-
         """
         Default parameters for code-explain model.
         """
@@ -71,7 +63,6 @@ class ModelParams(Enum):
         model_kwargs = {"temperature": 0.4, "max_tokens": 256, "max_retries": 3}
 
     class YkaDocument:
-
         """
         Default parameters for code-explain model.
         """
@@ -81,7 +72,6 @@ class ModelParams(Enum):
 
 
 class YkaLLM(BaseModel):
-
     """
     Yka LLM model wrapper.
     """
@@ -99,8 +89,7 @@ class YkaLLM(BaseModel):
 
         if not ModelTypes.has_value(model_name):
             raise ValueError(
-                f"`model_name`={model_name} not in supported model names: "
-                f"{[i.name for i in ModelTypes]}"
+                f"`model_name`={model_name} not in supported model names: " f"{[i.name for i in ModelTypes]}"
             )
         super(YkaLLM, self).__init__()
 
@@ -122,10 +111,7 @@ class YkaLLM(BaseModel):
 
         try:
             messages = [{"role": "user", "content": str(sample)}]
-            response = yka_langchain_raw(
-                messages=messages,
-                is_chat=False,
-            )
+            response = yka_langchain_raw(messages=messages)
             return response
 
         except Exception as error:
