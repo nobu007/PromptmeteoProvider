@@ -29,7 +29,6 @@ from langchain.prompts.pipeline import PipelinePromptTemplate
 
 
 class BasePrompt(ABC):
-
     """
     Prompt class interface.
     """
@@ -57,6 +56,9 @@ class BasePrompt(ABC):
 
         ANSWER_FORMAT:
             "Response just with the asnwer."
+            
+        PROMPT_HEADER:
+            "Prompt header."
     """
 
     def __init__(
@@ -64,6 +66,7 @@ class BasePrompt(ABC):
         prompt_domain: str = "",
         prompt_labels: str = "",
         prompt_detail: str = "",
+        prompt_header: str = "",
     ) -> None:
         """
         Build a Prompt object string given a concrete especification.
@@ -72,6 +75,7 @@ class BasePrompt(ABC):
         self._prompt_domain = prompt_domain
         self._prompt_labels = prompt_labels
         self._prompt_detail = prompt_detail
+        self._prompt_header = prompt_header
 
     @property
     def domain(
@@ -134,6 +138,7 @@ class BasePrompt(ABC):
             cls.PROMPT_DETAIL = prompt["PROMPT_DETAIL"]
             cls.ANSWER_FORMAT = prompt["ANSWER_FORMAT"]
             cls.CHAIN_THOUGHT = prompt["CHAIN_THOUGHT"]
+            cls.PROMPT_HEADER = prompt["PROMPT_HEADER"]
 
             cls.PROMPT_EXAMPLE = prompt_text
 
@@ -152,40 +157,27 @@ class BasePrompt(ABC):
 
         # Labels
         prompt_labels = (
-            ", ".join(self._prompt_labels)
-            if isinstance(self._prompt_labels, list)
-            else self._prompt_detail
+            ", ".join(self._prompt_labels) if isinstance(self._prompt_labels, list) else self._prompt_detail
         )
-        prompt_labels = (
-            self.PROMPT_LABELS.format(__LABELS__=prompt_labels)
-            if self._prompt_labels
-            else ""
-        )
+        prompt_labels = self.PROMPT_LABELS.format(__LABELS__=prompt_labels) if self._prompt_labels else ""
 
         # Domain
-        prompt_domain = (
-            self.PROMPT_DOMAIN.format(__DOMAIN__=self._prompt_domain)
-            if self._prompt_domain
-            else ""
-        )
+        prompt_domain = self.PROMPT_DOMAIN.format(__DOMAIN__=self._prompt_domain) if self._prompt_domain else ""
 
         # Detail
         prompt_detail = (
-            "\n - ".join([""] + self._prompt_detail)
-            if isinstance(self._prompt_detail, list)
-            else self._prompt_detail
+            "\n - ".join([""] + self._prompt_detail) if isinstance(self._prompt_detail, list) else self._prompt_detail
         )
-        prompt_detail = (
-            self.PROMPT_DETAIL.format(__DETAIL__=prompt_detail)
-            if self._prompt_detail
-            else ""
-        )
+        prompt_detail = self.PROMPT_DETAIL.format(__DETAIL__=prompt_detail) if self._prompt_detail else ""
 
         # Answer format
         answer_format = self.ANSWER_FORMAT
 
         # Chain of thoughts
         chain_thought = self.CHAIN_THOUGHT
+
+        # Prompt header
+        prompt_header = self.PROMPT_HEADER.format(__HEADER__=self._prompt_header) if self._prompt_header else ""
 
         return PipelinePromptTemplate(
             final_prompt=PromptTemplate.from_template(self.TEMPLATE),
@@ -209,6 +201,10 @@ class BasePrompt(ABC):
                 (
                     "__CHAIN_THOUGHT__",
                     PromptTemplate.from_template(chain_thought),
+                ),
+                (
+                    "__PROMPT_HEADER__",
+                    PromptTemplate.from_template(prompt_header),
                 ),
             ],
         )

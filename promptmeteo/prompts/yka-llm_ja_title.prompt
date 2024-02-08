@@ -1,0 +1,44 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+電子書籍の原稿を執筆しています。
+「処理対象の文章」で示す原稿の内容に合致したタイトルを回答してください。
+・タイトルの文字数は30文字以内にする
+・原稿の内容をより多く説明する
+・原稿のタイプに応じた表現を使う
+　主張： ～！
+　エビデンス： ～の理由、～の根拠
+　反論： ～？
+　再主張： ～！！
+
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "＜参考資料＞
+    \n\n{__DOMAIN__}."
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "{__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "最終的な原稿だけを出力してください。
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"

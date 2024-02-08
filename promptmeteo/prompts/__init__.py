@@ -67,9 +67,7 @@ def get_files_taxonomy(sep: str = "_"):
 
     try:
         prompt_files = [
-            os.path.join(path, name.replace(".prompt", "")).replace(
-                module_dir + "/", ""
-            )
+            os.path.join(path, name.replace(".prompt", "")).replace(module_dir + "/", "")
             for path, _, files in os.walk(module_dir)
             for name in files
             if name.endswith(".prompt")
@@ -92,7 +90,6 @@ def get_files_taxonomy(sep: str = "_"):
 
 
 class PromptFactory:
-
     """
     Factory of Prompts
     """
@@ -106,6 +103,7 @@ class PromptFactory:
         prompt_domain: str,
         prompt_labels: List[str],
         prompt_detail: str,
+        prompt_header: str,
     ):
         """
         Returns and instance of a BasePrompt object depending on the
@@ -145,6 +143,7 @@ class PromptFactory:
             prompt_domain=prompt_domain,
             prompt_labels=prompt_labels,
             prompt_detail=prompt_detail,
+            prompt_header=prompt_header,
         )
 
     @staticmethod
@@ -178,9 +177,7 @@ class PromptFactory:
             ]
         )
 
-        prompt_cls = type(
-            prompt_class_name, (BasePrompt,), {"__init__": BasePrompt.__init__}
-        )
+        prompt_cls = type(prompt_class_name, (BasePrompt,), {"__init__": BasePrompt.__init__})
 
         file_name = f"{_model_name}_{language}_{task_type}.prompt"
         with open(os.path.join(module_dir, file_name), encoding="utf-8") as fin:

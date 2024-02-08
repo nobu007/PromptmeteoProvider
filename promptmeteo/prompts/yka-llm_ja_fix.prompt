@@ -1,0 +1,43 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+原稿を改善するためのレビューコメントがあります。
+レビューコメントを参考にして「処理対象の文章」をリライトしてください。
+
+＜制約＞
+修正後の原稿文章だけを出力してください。
+修正不要な場合は元の「処理対象の文章」だけを出力してください。
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "＜レビューコメント＞
+    \n\n{__DOMAIN__}."
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "＜処理対象の文章＞
+    {__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "＜制約(リマインド)＞
+修正後の原稿文章だけを出力してください。
+それではリライトを開始してください。
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"

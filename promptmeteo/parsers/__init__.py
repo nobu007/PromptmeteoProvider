@@ -29,7 +29,6 @@ from .dummy_parser import DummyParser
 
 
 class ParserTypes(str, Enum):
-
     """
     Enum of availables parsers.
     """
@@ -39,11 +38,19 @@ class ParserTypes(str, Enum):
     PARSER_3: str = "qa"
     PARSER_4: str = "code-generation"
     PARSER_5: str = "code-explain"
-    PARSER_6: str = "add"
+    PARSER_6: str = "title"
+    PARSER_7: str = "add"
+    PARSER_8: str = "writing"
+    PARSER_9: str = "fix"
+    PARSER_10: str = "score"
+    PARSER_11: str = "review"
+    PARSER_12: str = "entity-relationship"
+    PARSER_13: str = "element-type"
+    PARSER_14: str = "next-action"
+    PARSER_15: str = "summary"
 
 
 class ParserFactory:
-
     """
     Factory of Parsers.
     """
@@ -62,19 +69,7 @@ class ParserFactory:
         if task_type == ParserTypes.PARSER_1.value:
             parser_cls = ClassificationParser
 
-        elif task_type == ParserTypes.PARSER_2.value:
-            parser_cls = DummyParser
-
-        elif task_type == ParserTypes.PARSER_3.value:
-            parser_cls = DummyParser
-
-        elif task_type == ParserTypes.PARSER_4.value:
-            parser_cls = DummyParser
-
-        elif task_type == ParserTypes.PARSER_5.value:
-            parser_cls = DummyParser
-
-        elif task_type == ParserTypes.PARSER_6.value:
+        elif task_type in [parser_type.value for parser_type in ParserTypes]:
             parser_cls = DummyParser
 
         else:

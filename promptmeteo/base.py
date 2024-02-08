@@ -41,13 +41,13 @@ from .tools import add_docstring_from
 
 
 class Base(ABC):
-
     """
     'Sun is setting on the New Republic. It's time for the ResistencIA to rise'
 
                                          - Padme Amidala, mother of Leia -
     """
-    SELECTOR_TYPE: str = ''
+
+    SELECTOR_TYPE: str = ""
 
     def __init__(
         self,
@@ -59,10 +59,11 @@ class Base(ABC):
         prompt_domain: Optional[str] = "",
         prompt_labels: List[str] = None,
         prompt_detail: Optional[str] = None,
+        prompt_header: Optional[str] = "",
         selector_k: int = 10,
         selector_algorithm: str = "relevance",
         verbose: bool = False,
-        **kwargs
+        **kwargs,
     ) -> None:
         """
         Prompmeteo is tool, powered by LLMs, which is able to solve NLP models
@@ -104,12 +105,12 @@ class Base(ABC):
         _local = locals()
 
         for param in signature(self.__class__).parameters:
-            if 'kwargs' in param:
+            if "kwargs" in param:
                 continue
             _init_params[param] = _local.get(param, kwargs.get(param))
 
         for param in signature(Base).parameters:
-            if 'kwargs' in param:
+            if "kwargs" in param:
                 continue
             _init_params[param] = _local.get(param, kwargs.get(param))
 
@@ -123,6 +124,7 @@ class Base(ABC):
         self.prompt_domain: Optional[str] = prompt_domain
         self.prompt_labels: List[str] = prompt_labels or []
         self.prompt_detail: Optional[str] = prompt_detail
+        self.prompt_header: Optional[str] = prompt_header
         self._selector_k: int = selector_k
         self._selector_algorithm: str = selector_algorithm
         self.verbose: bool = verbose
@@ -235,8 +237,7 @@ class Base(ABC):
 
         if model_dir != "" and not os.path.exists(model_dir):
             raise ValueError(
-                f"{self.__class__.__name__} error in `save_model()`. "
-                f"directory {model_dir} does not exists."
+                f"{self.__class__.__name__} error in `save_model()`. " f"directory {model_dir} does not exists."
             )
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -244,7 +245,7 @@ class Base(ABC):
             self.task.selector.vectorstore.save_local(tmp_path)
 
             init_tmp_path = f"{tmp_path}.init"
-            with open(init_tmp_path, mode='w') as f:
+            with open(init_tmp_path, mode="w") as f:
                 json.dump(self._init_params, f)
 
             with tarfile.open(model_path, mode="w:gz") as tar:
@@ -285,10 +286,7 @@ class Base(ABC):
             )
 
         if not os.path.exists(model_path):
-            raise ValueError(
-                f"{cls.__name__} error in `load_model()`. "
-                f"directory {model_dir} does not exists."
-            )
+            raise ValueError(f"{cls.__name__} error in `load_model()`. " f"directory {model_dir} does not exists.")
 
         with tempfile.TemporaryDirectory() as tmp:
             with tarfile.open(model_path, "r:gz") as tar:
@@ -311,7 +309,6 @@ class Base(ABC):
 
 
 class BaseSupervised(Base):
-
     """
     Model Inferface for supervised training tasks.
     """
@@ -323,8 +320,7 @@ class BaseSupervised(Base):
         self,
         **kwargs,
     ) -> None:
-        """
-        """
+        """ """
 
         super(BaseSupervised, self).__init__(**kwargs)
 
@@ -412,8 +408,7 @@ class BaseUnsupervised(Base):
     ) -> None:
         if "prompt_labels" in kwargs:
             raise ValueError(
-                f"{self.__class__.__name__} can not be inicializated with the "
-                f"argument `prompt_labels`."
+                f"{self.__class__.__name__} can not be inicializated with the " f"argument `prompt_labels`."
             )
 
         super(BaseUnsupervised, self).__init__(**kwargs)

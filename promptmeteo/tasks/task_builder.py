@@ -36,7 +36,6 @@ from .task import Task
 
 
 class TaskTypes(str, Enum):
-
     """
     Enum with all the available task types
     """
@@ -45,11 +44,19 @@ class TaskTypes(str, Enum):
     CLASSIFICATION: str = "classification"
     CODE_GENERATION: str = "code-generation"
     CODE_EXPLAIN: str = "code-explain"
+    TITLE: str = "title"
     ADD: str = "add"
+    WRITING: str = "writing"
+    FIX: str = "fix"
+    SCORE: str = "score"
+    REVIEW: str = "review"
+    ENTITY_RELATIONSHIP: str = "entity-relationship"
+    ELEMENT_TYPE: str = "element-type"
+    NEXT_ACTION: str = "next-action"
+    SUMMARY: str = "summary"
 
 
 class TaskBuilder:
-
     """
     Builder of Tasks.
     """
@@ -79,6 +86,7 @@ class TaskBuilder:
         prompt_domain: str,
         prompt_labels: List[str],
         prompt_detail: str,
+        prompt_header: str = "",
     ) -> Self:
         """
         Builds a prompt for the task.
@@ -91,6 +99,7 @@ class TaskBuilder:
             prompt_domain=prompt_domain,
             prompt_labels=prompt_labels,
             prompt_detail=prompt_detail,
+            prompt_header=prompt_header,
         )
 
         return self

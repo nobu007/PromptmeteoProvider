@@ -1,0 +1,43 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+次の文章をclaim(主張), fact(事実), evidence(証拠), counter(反論), claim_end(主張終わり)のいずれかに分類してください。
+最も確からしい分類結果1つと信頼度(0～1.0)だけをclaim:0.5のように1行で回答してください。
+完全に分類できて他の要素がない場合の信頼度を1.0とします。
+
+claim_endは次の要素で判断してください。
+・話題を終了して次の話に移る様子がある
+・主張を繰り返す様子がある
+・読者に認識の変化や行動を促す様子がある
+
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "＜参考資料＞
+    \n\n{__DOMAIN__}."
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "{__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "最終的な原稿だけを出力してください。
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"

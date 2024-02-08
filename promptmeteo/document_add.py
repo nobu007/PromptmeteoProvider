@@ -33,7 +33,6 @@ from .tools import add_docstring_from
 
 
 class DocumentAdd(BaseSupervised):
-
     """
     DocumentAdd Task
     """
@@ -41,6 +40,7 @@ class DocumentAdd(BaseSupervised):
     @add_docstring_from(BaseSupervised.__init__)
     def __init__(
         self,
+        task_type: TaskTypes = TaskTypes.ADD,
         **kwargs,
     ) -> None:
         """
@@ -68,8 +68,6 @@ class DocumentAdd(BaseSupervised):
 
         super(DocumentAdd, self).__init__(**kwargs)
 
-        task_type = TaskTypes.ADD.value
-
         self._builder = TaskBuilder(
             language=self.language,
             task_type=task_type,
@@ -90,6 +88,7 @@ class DocumentAdd(BaseSupervised):
             prompt_domain=self.prompt_domain,
             prompt_labels=self.prompt_labels,
             prompt_detail=self.prompt_detail,
+            prompt_header=self.prompt_header,
         )
 
         # Build parser
@@ -105,9 +104,7 @@ class DocumentAdd(BaseSupervised):
     ) -> Self:
         """ """
 
-        super(DocumentAdd, self).train(
-            examples=examples, annotations=annotations
-        )
+        super(DocumentAdd, self).train(examples=examples, annotations=annotations)
 
         if not self.prompt_labels:
             self.prompt_labels = list(set(annotations))

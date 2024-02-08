@@ -39,6 +39,7 @@ class TestBaseSupervised:
             puede describirse como malo, de mala calidad, indeseable, inútil
             o insatisfactorio; neutro es la clase que asignaremos a todo lo
             que no sea positivo o negativo.""",
+            prompt_header=""
             selector_k=10,
             selector_algorithm="mmr",
             verbose=True,
