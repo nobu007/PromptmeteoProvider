@@ -1,0 +1,41 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+階層構造のアウトライン作成してください。
+指定されたタイトルに対して、１階層掘り下げたタイトル案のみを必要な個数だけ出力してください。
+タイトルは30文字以内です。element_typeを意識してください。
+なるべく多くの情報を含めてください。
+
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__PROMPT_DETAIL__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "＜参考資料＞
+    \n\n{__DOMAIN__}."
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "{__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "最終的なタイトルだけを出力してください。
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"

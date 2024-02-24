@@ -54,6 +54,7 @@ class TaskTypes(str, Enum):
     ELEMENT_TYPE: str = "element-type"
     NEXT_ACTION: str = "next-action"
     SUMMARY: str = "summary"
+    OUTLINE: str = "outline"
 
 
 class TaskBuilder:
