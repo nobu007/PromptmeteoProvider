@@ -1,0 +1,40 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+原稿を改善するために読者になりきって感想や疑問点を書いてください。
+
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__PROMPT_DETAIL__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "
+    \n\n{__DOMAIN__}."
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "
+    {__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "＜依頼内容(リマインド)＞
+原稿を改善するために読者になりきって感想や疑問点を書いてください。
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"

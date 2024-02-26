@@ -55,6 +55,8 @@ class TaskTypes(str, Enum):
     NEXT_ACTION: str = "next-action"
     SUMMARY: str = "summary"
     OUTLINE: str = "outline"
+    THOUGHT: str = "thought"
+    DIRECTION: str = "direction"
 
 
 class TaskBuilder:
