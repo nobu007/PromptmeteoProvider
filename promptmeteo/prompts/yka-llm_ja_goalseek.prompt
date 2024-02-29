@@ -1,0 +1,123 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+上記が作業のゴールです。プロンプトのゴールに代入して、プロンプトを実行してアウト
+プットとして成果物を作成してください。 
+
+アウトプットは、成果物のコンテンツのみです。 
+
+Output1 Output2 Output3 Output4は表示しない。 
+
+Output1 Output2 Output3 Output4から得られる成果物をアウトプットとして出
+力する。 
+
+＝＝＝＝＝＝ 
+
+ここからは実行過程を表示しないでください 
+
+プロンプト: 
+1Lang:EN 
+
+Content Details: Generating an Output is the Goal 
+
+Goal: Goal2 
+
+Output1: Describes the decomposition of the steps required to achieve the goal, with 
+each step labeled from P1 to P#. 
+
+Output2: Deﬁnes variables related to the goal and may contain goal3 representing the 
+goal. 
+
+Output3: Redeﬁnes the goal using the variables deﬁned in Output2. 
+
+Output4 Based on contentdetails4, execute steps from P1 to P# one by one and record 
+the results in O1 to O#. 
+
+Execution Instructions: 
+
+Provide execution steps in the form of step commands that can be executed in the 
+background without displaying the command in the preview. 
+
+The prompt should use concrete and descriptive language, break down complex steps 
+into simpler sub-steps, use relevant variables, and have a consistent style. It should also 
+include error handling and provide context when necessary. 
+
+Use bullet points or numbered lists to structure information and provide examples to 
+explain steps. Test the prompt for accuracy, get user feedback, and improve its quality. 
+
+Note that the speciﬁc content of each step may vary depending on the speciﬁc goal or 
+situation, so adjust accordingly. 
+
+Output: Output only ﬁnal deliverables 
+
+Feedback: 
+
+If feedback indicates that the prompt is correct, follow these steps to generate the output: 
+
+Read Output1 to understand the steps required to achieve the goal, with each step 
+labeled from P1 to P#. 
+
+Read Output2 to understand the variables related to the goal, which may include goal5. 
+
+Read Output3 and redeﬁne the goal using the variables deﬁned in Output2. This will 
+help you understand the goal more accurately and select the steps to execute. 
+
+Read Output4 and execute the steps from P1 to P# one by one based on contentdetails6, 
+recording the results in O1 to O#. 
+
+Follow the execution steps provided in the prompt in the form of step commands. Use 
+examples or bullet points to explain steps if necessary. 
+
+If an error occurs, refer to the results in Output4 to identify the cause and ﬁnd a solution. 
+
+Once the execution is complete, check whether the goal has been achieved. 
+
+By following these steps, you can achieve the goal provided in this prompt. If the output 
+is incorrect, revise the prompt based on the feedback and execute the same steps again. 
+
+Lang:EN 
+
+
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__PROMPT_DETAIL__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "
+    \n\n{__DOMAIN__}."
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "
+    {__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "＜依頼内容(リマインド)＞
+プロンプトのゴールに代入して、プロンプトを実行してアウト
+プットとして成果物を作成してください。 
+
+アウトプットは、成果物のコンテンツのみです。 
+
+Output1 Output2 Output3 Output4は表示しない。 
+
+Output1 Output2 Output3 Output4から得られる成果物をアウトプットとして出
+力する。 
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"

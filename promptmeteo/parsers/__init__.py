@@ -52,6 +52,8 @@ class ParserTypes(str, Enum):
     PARSER_17: str = "theme"
     PARSER_18: str = "direction"
     PARSER_19: str = "thought"
+    PARSER_20: str = "goal"
+    PARSER_21: str = "goalseek"
 
 
 class ParserFactory:
