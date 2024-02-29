@@ -1,0 +1,42 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+<thema></thema>で示すテーマに相応しい目次案を作成してください。
+目次の個数は10程度でお願いします。
+1つの目次は30文字程度で、改行を含めないでください。
+目次にコンテンツを生成するだけの十分な情報を含めてください。
+最終的な目次案のみを出力してください。
+
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__PROMPT_DETAIL__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "＜参考資料＞
+    \n\n{__DOMAIN__}."
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "{__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "最終的な目次案だけを出力してください。
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"

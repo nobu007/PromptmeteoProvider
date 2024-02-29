@@ -1,0 +1,74 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+次のような誤字脱字や漢字の変換ミスを修正してください。
+
+Before：どのようにようにやり過ごしていたのかを思うと
+After：どのようにやり過ごしていたのかを思うと
+
+Before：ほどんと行くことのない
+After：ほとんど行くことのない
+
+Before：日本を経つ前
+After：日本を発つ前
+
+Before：自身のなさとして現れ
+After：自信のなさとして表れ
+
+Before：彼と再開した時も
+After：彼と再会した時も
+
+Before：滞在を一日伸ばして三泊四日にした
+After：滞在を一日延ばして三泊四日にした
+
+Before：車が雑然と止まる広い駐車場
+After：車が雑然と停まる広い駐車場
+
+Before：公演の面積の半分
+After：公園の面積の半分
+
+Before：社会の通年
+After：社会の通念
+
+Before：補足され得ないもの
+After：捕捉され得ないもの
+
+Before：彼女は私の知らない単語がいくつも使うので
+After：彼女は私の知らない単語をいくつも使うので
+
+Before：妙な高揚感を産んでいた
+After：妙な高揚感を生んでいた
+
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__PROMPT_DETAIL__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "＜参考資料＞
+    \n\n{__DOMAIN__}."
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "{__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "最終的な原稿だけを出力してください。
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"
