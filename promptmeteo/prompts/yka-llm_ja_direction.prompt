@@ -1,11 +1,8 @@
 TEMPLATE:
-    "# 前提条件
-    {__PROMPT_HEADER__}
+    "{__PROMPT_HEADER__}
 
-# 依頼内容
-content_element の内容を一意に確定するために、作者の意図として必要な情報を出力してください。
-作者は忙しいため、全ての変数に最も妥当な設定を決めて明確化してください。あなたの裁量に完全に任せます。
-次の情報を注意深く確認して作業をすすめてください。
+### 依頼内容
+content_element について、作者の意図を出力してください。
 
     {__PROMPT_DOMAIN__}
     {__PROMPT_LABELS__}
@@ -18,7 +15,7 @@ content_element の内容を一意に確定するために、作者の意図と�
 
 PROMPT_DOMAIN:
     "
-    # 重要情報
+    ### DOMAIN
     {__DOMAIN__}"
 
 
@@ -28,7 +25,7 @@ PROMPT_LABELS:
 
 PROMPT_DETAIL:
     "
-    # 原稿情報
+    ### DETAIL
     {__DETAIL__}"
 
 
@@ -36,8 +33,8 @@ CHAIN_THOUGHT:
     "ステップバイステップで思考して結論を出してください。"
 
 ANSWER_FORMAT:
-    "# 依頼内容(リマインド)
-原稿を改善するために作者になりきってパラグラフの意図を改善してください。
+    "### ANSWER_FORMAT
+作者の思考をトレースして、content_element について、作者の意図を出力してください。
     "
 
 PROMPT_HEADER:
