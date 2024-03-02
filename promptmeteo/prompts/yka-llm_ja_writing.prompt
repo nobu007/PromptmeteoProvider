@@ -2,9 +2,9 @@ TEMPLATE:
     "{__PROMPT_HEADER__}
 
 ＜依頼内容＞
-<title></title>で示すタイトルに相応しい原稿を作成してください。
-「参考資料」に全体の章構成を示します。章構成に合わせて適切な内容にしてください。
-最終的な原稿のみを出力してください。element_typeや出力の意図は書かないでください。
+content_element の内容を書いてください。
+次の情報を注意深く確認して作業をすすめてください。
+最終的な原稿のみを出力してください。element_typeや作者の意図など、原稿以外の一切の情報は不要です。
 
 
     {__PROMPT_DOMAIN__}
@@ -17,8 +17,7 @@ TEMPLATE:
 
 
 PROMPT_DOMAIN:
-    "＜参考資料＞
-    \n\n{__DOMAIN__}."
+    "{__DOMAIN__}."
 
 
 PROMPT_LABELS:
@@ -33,7 +32,7 @@ CHAIN_THOUGHT:
     ""
 
 ANSWER_FORMAT:
-    "最終的な原稿だけを出力してください。
+    "content_element としての最終的な原稿だけを出力してください。
     "
 
 PROMPT_HEADER:

@@ -1,6 +1,5 @@
 TEMPLATE:
-    "{__PROMPT_HEADER__}
-
+    "
 You are a professional writer specializing in text summarization. Make a short, one-sentence summary of the chunk of the text provided by the user. 
 The summary should reflect the main idea and the most important relationships of the text.
 Notice that the user has annotated the text with entities and relationships. 
@@ -48,8 +47,7 @@ Please summarize the following text in 日本語 entity and relationship format:
 
 
 PROMPT_DOMAIN:
-    "＜参考資料＞
-    \n\n{__DOMAIN__}."
+    "{__DOMAIN__}"
 
 
 PROMPT_LABELS:
@@ -57,15 +55,14 @@ PROMPT_LABELS:
 
 
 PROMPT_DETAIL:
-    "{__DETAIL__}"
+    ""
 
 
 CHAIN_THOUGHT:
     ""
 
 ANSWER_FORMAT:
-    "最終的な原稿だけを出力してください。
-    "
+    ""
 
 PROMPT_HEADER:
     "{__HEADER__}"
