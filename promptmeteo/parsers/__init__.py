@@ -56,6 +56,7 @@ class ParserTypes(str, Enum):
     PARSER_21: str = "goalseek"
     PARSER_22: str = "refinement"
     PARSER_23: str = "headline"
+    PARSER_24: str = "prerequisite"
 
 
 class ParserFactory:

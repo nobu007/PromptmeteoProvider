@@ -61,6 +61,7 @@ class TaskTypes(str, Enum):
     GOALSEEK: str = "goalseek"
     REFINEMENT: str = "refinement"
     HEADLINE: str = "headline"
+    PREREQUISITE: str = "prerequisite"
 
 
 class TaskBuilder:
