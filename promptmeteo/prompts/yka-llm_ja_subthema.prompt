@@ -1,0 +1,43 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+サブテーマを設計してください。
+指定されたテーマを完成させるために必要な１つ以上のサブテーマを決めてください。
+１つのサブテーマは１つの content_element に対応させてください。
+１つのサブテーマは１行で書いてください。
+サブテーマの設計に element_type でclaim(主張), fact(事実), evidence(証拠), counter(反論), claim_end(主張終わり)の構造を取り入れてください。
+
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__PROMPT_DETAIL__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "{__DOMAIN__}"
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "
+    {__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "＜依頼内容(リマインド)＞
+原稿を改善するために読者になりきって感想や疑問点を書いてください。
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"

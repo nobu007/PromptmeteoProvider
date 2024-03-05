@@ -57,6 +57,8 @@ class ParserTypes(str, Enum):
     PARSER_22: str = "refinement"
     PARSER_23: str = "headline"
     PARSER_24: str = "prerequisite"
+    PARSER_25: str = "thema"
+    PARSER_26: str = "subthema"
 
 
 class ParserFactory:

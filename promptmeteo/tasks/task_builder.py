@@ -62,6 +62,8 @@ class TaskTypes(str, Enum):
     REFINEMENT: str = "refinement"
     HEADLINE: str = "headline"
     PREREQUISITE: str = "prerequisite"
+    THEMA: str = "thema"
+    SUBTHEMA: str = "subthema"
 
 
 class TaskBuilder:
