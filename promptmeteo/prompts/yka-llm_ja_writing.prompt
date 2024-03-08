@@ -3,7 +3,8 @@ TEMPLATE:
 
 ＜依頼内容＞
 content_element の内容を書いてください。
-次の情報を注意深く確認して作業をすすめてください。
+content_element は単一の element_type を表現した50～400文字程度の純粋なテキストです。
+element_type はclaim(主張), fact(事実), evidence(証拠), counter(反論), claim_end(主張終わり)のどれか1つを表現します。
 最終的な原稿のみを出力してください。element_typeや作者の意図など、原稿以外の一切の情報は不要です。
 
 

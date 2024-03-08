@@ -15,8 +15,7 @@ TEMPLATE:
 
 
 PROMPT_DOMAIN:
-    "
-    \n\n{__DOMAIN__}."
+    "{__DOMAIN__}"
 
 
 PROMPT_LABELS:

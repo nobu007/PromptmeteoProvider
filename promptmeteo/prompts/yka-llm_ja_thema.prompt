@@ -2,10 +2,10 @@ TEMPLATE:
     "{__PROMPT_HEADER__}
 
 ＜依頼内容＞
-テーマを設計してください。
-テーマは１行で書いてください。
-テーマでは element_type でclaim(主張), fact(事実), evidence(証拠), counter(反論), claim_end(主張終わり)の構造を全て含む大枠を示してください。
-
+テーマを作成してください。
+テーマは純粋なテキスト１行で書いてください。タグを含めないでください。
+上位 level のテーマでは element_type でclaim(主張), fact(事実), evidence(証拠), counter(反論), claim_end(主張終わり)の構造を全て含む大枠を示してください。
+下位 level のテーマでは単一の element_type に対応するテーマを書いてください。
 
     {__PROMPT_DOMAIN__}
     {__PROMPT_LABELS__}
@@ -34,7 +34,7 @@ CHAIN_THOUGHT:
 
 ANSWER_FORMAT:
     "＜依頼内容(リマインド)＞
-原稿を改善するために読者になりきって感想や疑問点を書いてください。
+１つのテーマを作成してください。純粋なテキスト１行です。
     "
 
 PROMPT_HEADER:
