@@ -1,0 +1,43 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+## Request ##
+It is important to design a conclusion and logical configuration to create a stable manuscript.
+Write the conclusion of Content_element to the end.
+Ultimately, you need to meet the following requirements.
+・ Confusion is included in the last part of main_txt (it will be improved recursively, so it is not necessary to match at this time).
+・ You can understand the flow of the story only with Title and Confusion.
+・ The manuscript of the book must be completed when all Main_txt is combined.
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__PROMPT_DETAIL__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "{__DOMAIN__}"
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "{__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "## Request(remind) ##
+Write the conclusion of Content_element to the end.
+Please output all in 日本語.
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"

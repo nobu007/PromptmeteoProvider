@@ -1,0 +1,57 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+content_element を作成するためのプロンプトを完成させてください。
+現時点のプロンプトをgoalseekタグで示します。
+しかし単一の content_element は他の content_element との相互作用により評価されるため一意に確定できません。
+
+そこで、content_element に影響する要素を変数として分離して、変数値をプロンプトの中で明記します。
+未知の変数がなくなり、全ての変数値が確定したら作業完了です。
+そのために次のプロセスに従ってください。
+
+1. まず最初に、当該 content_element についての情報を提供しますので内容を正確に理解してください。
+2. 入力に基づいて、4つのセクションを生成してください。
+a) 改訂されたプロンプト（確定した変数値をプロンプト内に明記してください。情報量が多くなるため、明確かつ簡潔に記載してください）
+b) 評価（改訂されたプロンプトの完成度(0-100)です。content_elementが一意に確定できたら100%です）
+c) 変数（ゴールを表現するために必要な未知の変数について記載してください）
+d) 質問（変数を決定するために他の content_element やコンテンツ編集者に質問してください）
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__PROMPT_DETAIL__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "
+    \n\n{__DOMAIN__}."
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "
+    {__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "＜依頼内容(リマインド)＞
+入力に基づいて、4つのセクションを生成してください。
+a) 改訂されたプロンプト
+b) 評価
+c) 変数
+d) 質問
+Please output all in 日本語.
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"

@@ -1,0 +1,44 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+＜依頼内容＞
+安定した原稿を作成するには結論と論理構成を設計することが重要です。
+content_element の結論部分を最後まで書いてください。
+最終的には下記の要件を満たす必要があります。
+・main_txtの最終部分にconfusionを含んでいること（再帰的に改善しますので、現時点で必ずしも一致する必要はありません）
+・titleとconfusionだけで話の流れが理解できること。
+・main_txtを全て結合した時に書籍の原稿が完成していること。
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__PROMPT_DETAIL__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "{__DOMAIN__}"
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "
+    {__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "＜依頼内容(リマインド)＞
+content_element の結論部分を最後まで書いてください。
+Please output all in 日本語.
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"
