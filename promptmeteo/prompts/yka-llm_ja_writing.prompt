@@ -1,13 +1,8 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-＜依頼内容＞
-content_element の内容を書いてください。
-content_element は単一の element_type を表現した50～400文字程度の純粋なテキストです。
-element_type はclaim(主張), fact(事実), evidence(証拠), counter(反論), claim_end(主張終わり)のどれか1つを表現します。
-最終的な原稿のみを出力してください。element_typeや作者の意図など、原稿以外の一切の情報は不要です。
-
-
+    {__PROMPT_ORDER__}
+    {__PROMPT_PROCESS__}
     {__PROMPT_DOMAIN__}
     {__PROMPT_LABELS__}
 
@@ -17,8 +12,16 @@ element_type はclaim(主張), fact(事実), evidence(証拠), counter(反論), 
     {__ANSWER_FORMAT__}"
 
 
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
+
+
 PROMPT_DOMAIN:
-    "{__DOMAIN__}."
+    "{__DOMAIN__}"
 
 
 PROMPT_LABELS:
@@ -33,8 +36,9 @@ CHAIN_THOUGHT:
     ""
 
 ANSWER_FORMAT:
-    "content_element としての最終的な原稿だけを出力してください。
-    Please output all in 日本語.
+    "＜作業指示(リマインド)＞
+{__PROCESS__}
+Please output all in 日本語.
     "
 
 PROMPT_HEADER:

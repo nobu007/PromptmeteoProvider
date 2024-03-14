@@ -1,10 +1,7 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-#### 作業指示 ####
-
-content_element で読者の理解がどのように変化するかの観点で設計してください。
-そのために次のプロセスに従ってください。
+{__PROMPT_ORDER__}
 
 {__PROMPT_PROCESS__}
 

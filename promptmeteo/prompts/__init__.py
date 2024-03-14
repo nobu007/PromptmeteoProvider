@@ -100,6 +100,8 @@ class PromptFactory:
         language: str,
         task_type: str,
         model_name: str,
+        prompt_order: str,
+        prompt_process: str,
         prompt_domain: str,
         prompt_labels: List[str],
         prompt_detail: str,
@@ -140,6 +142,8 @@ class PromptFactory:
         prompt_cls = cls.build_class(language, task_type, _model_name)
 
         return prompt_cls(
+            prompt_order=prompt_order,
+            prompt_process=prompt_process,
             prompt_domain=prompt_domain,
             prompt_labels=prompt_labels,
             prompt_detail=prompt_detail,

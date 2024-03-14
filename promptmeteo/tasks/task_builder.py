@@ -69,6 +69,7 @@ class TaskTypes(str, Enum):
     SENTENCE_PLAN: str = "sentence_plan"
     BEFORE: str = "before"
     AFTER: str = "after"
+    COMMON: str = "common"
 
 
 class TaskBuilder:
@@ -98,6 +99,8 @@ class TaskBuilder:
     def build_prompt(
         self,
         model_name: str,
+        prompt_order: str,
+        prompt_process: str,
         prompt_domain: str,
         prompt_labels: List[str],
         prompt_detail: str,
@@ -111,6 +114,8 @@ class TaskBuilder:
             language=self._task.language,
             task_type=self._task.task_type,
             model_name=model_name,
+            prompt_order=prompt_order,
+            prompt_process=prompt_process,
             prompt_domain=prompt_domain,
             prompt_labels=prompt_labels,
             prompt_detail=prompt_detail,

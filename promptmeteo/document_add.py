@@ -85,6 +85,8 @@ class DocumentAdd(BaseSupervised):
         # Build prompt
         self._builder.build_prompt(
             model_name=self.model_name,
+            prompt_order=self.prompt_order,
+            prompt_process=self.prompt_process,
             prompt_domain=self.prompt_domain,
             prompt_labels=self.prompt_labels,
             prompt_detail=self.prompt_detail,

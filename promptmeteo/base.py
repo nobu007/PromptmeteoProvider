@@ -56,6 +56,8 @@ class Base(ABC):
         model_provider_name: str,
         model_provider_token: Optional[str] = None,
         model_params: Optional[Dict] = None,
+        prompt_order: Optional[str] = "",
+        prompt_process: Optional[str] = "",
         prompt_domain: Optional[str] = "",
         prompt_labels: List[str] = None,
         prompt_detail: Optional[str] = None,
@@ -81,6 +83,10 @@ class Base(ABC):
         model_provider_name : str
 
         model_provider_token : Optional[str]
+
+        prompt_order : str
+
+        prompt_process : str
 
         prompt_domain : str
 
@@ -121,6 +127,8 @@ class Base(ABC):
         self.model_provider_name: str = model_provider_name
         self.model_provider_token: Optional[str] = model_provider_token
         self.model_params: Dict = model_params or {}
+        self.prompt_order: Optional[str] = prompt_order
+        self.prompt_process: Optional[str] = prompt_process
         self.prompt_domain: Optional[str] = prompt_domain
         self.prompt_labels: List[str] = prompt_labels or []
         self.prompt_detail: Optional[str] = prompt_detail

@@ -35,13 +35,21 @@ class BasePrompt(ABC):
 
     PROMPT_EXAMPLE = """
         TEMPLATE:
-            "Here you exaplain the task.
+            "Here you explain the task.
+            {__PROMPT_ORDER__}
+            {__PROMPT_PROCESS__}
             {__PROMPT_DOMAIN__}
             {__PROMPT_LABELS__}
 
             {__CHAIN_THOUGHT__}
             {__ANSWER_FORMAT__}"
 
+        PROMPT_ORDER:
+            "Here you define the {__ORDER__}."
+            
+        PROMPT_PROCESS:
+            "Here you define the {__PROCESS__}."
+            
         PROMPT_DOMAIN:
             "Here you explain the {__DOMAIN__} from the texts."
 
@@ -63,6 +71,8 @@ class BasePrompt(ABC):
 
     def __init__(
         self,
+        prompt_order: str = "",
+        prompt_process: str = "",
         prompt_domain: str = "",
         prompt_labels: str = "",
         prompt_detail: str = "",
@@ -72,10 +82,26 @@ class BasePrompt(ABC):
         Build a Prompt object string given a concrete especification.
         """
 
+        self._prompt_order = prompt_order
+        self._prompt_process = prompt_process
         self._prompt_domain = prompt_domain
         self._prompt_labels = prompt_labels
         self._prompt_detail = prompt_detail
         self._prompt_header = prompt_header
+
+    @property
+    def order(
+        self,
+    ) -> str:
+        """Prompt Order."""
+        return self._prompt_order
+
+    @property
+    def process(
+        self,
+    ) -> str:
+        """Prompt Process."""
+        return self._prompt_process
 
     @property
     def domain(
@@ -132,13 +158,15 @@ class BasePrompt(ABC):
             ) from error
 
         try:
-            cls.TEMPLATE = prompt["TEMPLATE"]
-            cls.PROMPT_DOMAIN = prompt["PROMPT_DOMAIN"]
-            cls.PROMPT_LABELS = prompt["PROMPT_LABELS"]
-            cls.PROMPT_DETAIL = prompt["PROMPT_DETAIL"]
-            cls.ANSWER_FORMAT = prompt["ANSWER_FORMAT"]
-            cls.CHAIN_THOUGHT = prompt["CHAIN_THOUGHT"]
-            cls.PROMPT_HEADER = prompt["PROMPT_HEADER"]
+            cls.TEMPLATE = prompt.get("TEMPLATE", "")
+            cls.PROMPT_ORDER = prompt.get("PROMPT_ORDER", "")
+            cls.PROMPT_PROCESS = prompt.get("PROMPT_PROCESS", "")
+            cls.PROMPT_DOMAIN = prompt.get("PROMPT_DOMAIN", "")
+            cls.PROMPT_LABELS = prompt.get("PROMPT_LABELS", "")
+            cls.PROMPT_DETAIL = prompt.get("PROMPT_DETAIL", "")
+            cls.ANSWER_FORMAT = prompt.get("ANSWER_FORMAT", "")
+            cls.CHAIN_THOUGHT = prompt.get("CHAIN_THOUGHT", "")
+            cls.PROMPT_HEADER = prompt.get("PROMPT_HEADER", "")
 
             cls.PROMPT_EXAMPLE = prompt_text
 
@@ -155,56 +183,62 @@ class BasePrompt(ABC):
         Returns the prompt template for the current task.
         """
 
-        # Labels
-        prompt_labels = (
-            ", ".join(self._prompt_labels) if isinstance(self._prompt_labels, list) else self._prompt_detail
-        )
-        prompt_labels = self.PROMPT_LABELS.format(__LABELS__=prompt_labels) if self._prompt_labels else ""
+        def format_variable(value):
+            return "\n - ".join([""] + value) if isinstance(value, list) else value
 
-        # Domain
-        prompt_domain = self.PROMPT_DOMAIN.format(__DOMAIN__=self._prompt_domain) if self._prompt_domain else ""
+        def format_prompt(template, variables):
+            formatted_variables = {k: format_variable(v) for k, v in variables.items() if v}
+            try:
+                return template.format(**formatted_variables) if template else ""
+            except KeyError:
+                return ""
 
-        # Detail
-        prompt_detail = (
-            "\n - ".join([""] + self._prompt_detail) if isinstance(self._prompt_detail, list) else self._prompt_detail
-        )
-        prompt_detail = self.PROMPT_DETAIL.format(__DETAIL__=prompt_detail) if self._prompt_detail else ""
+        # Variables
+        variables = {
+            "__LABELS__": self._prompt_labels,
+            "__ORDER__": self._prompt_order,
+            "__PROCESS__": self._prompt_process,
+            "__DOMAIN__": self._prompt_domain,
+            "__DETAIL__": self._prompt_detail,
+            "__HEADER__": self._prompt_header,
+            "__ANSWER_FORMAT__": self.ANSWER_FORMAT,
+            "__CHAIN_THOUGHT__": self.CHAIN_THOUGHT,
+        }
 
-        # Answer format
-        answer_format = self.ANSWER_FORMAT
+        # Prompts
+        prompts = {
+            "labels": self.PROMPT_LABELS,
+            "order": self.PROMPT_ORDER,
+            "process": self.PROMPT_PROCESS,
+            "domain": self.PROMPT_DOMAIN,
+            "detail": self.PROMPT_DETAIL,
+            "answer_format": self.ANSWER_FORMAT,
+            "chain_thought": self.CHAIN_THOUGHT,
+            "header": self.PROMPT_HEADER,
+        }
 
-        # Chain of thoughts
-        chain_thought = self.CHAIN_THOUGHT
-
-        # Prompt header
-        prompt_header = self.PROMPT_HEADER.format(__HEADER__=self._prompt_header) if self._prompt_header else ""
-
-        return PipelinePromptTemplate(
-            final_prompt=PromptTemplate.from_template(self.TEMPLATE),
-            pipeline_prompts=[
-                (
-                    "__PROMPT_DOMAIN__",
-                    PromptTemplate.from_template(prompt_domain),
-                ),
-                (
-                    "__PROMPT_LABELS__",
-                    PromptTemplate.from_template(prompt_labels),
-                ),
-                (
-                    "__PROMPT_DETAIL__",
-                    PromptTemplate.from_template(prompt_detail),
-                ),
+        pipeline_prompts = [
+            (
+                f"__PROMPT_{k.upper()}__",
+                PromptTemplate.from_template(format_prompt(v, variables)),
+            )
+            for k, v in prompts.items()
+        ]
+        # Add __ANSWER_FORMAT__ and __CHAIN_THOUGHT__ to pipeline_prompts
+        pipeline_prompts.extend(
+            [
                 (
                     "__ANSWER_FORMAT__",
-                    PromptTemplate.from_template(answer_format),
+                    PromptTemplate.from_template(format_prompt(self.ANSWER_FORMAT, variables)),
                 ),
                 (
                     "__CHAIN_THOUGHT__",
-                    PromptTemplate.from_template(chain_thought),
+                    PromptTemplate.from_template(format_prompt(self.CHAIN_THOUGHT, variables)),
                 ),
-                (
-                    "__PROMPT_HEADER__",
-                    PromptTemplate.from_template(prompt_header),
-                ),
-            ],
+            ]
+        )
+
+        return PipelinePromptTemplate(
+            final_prompt=PromptTemplate.from_template(self.TEMPLATE),
+            pipeline_prompts=pipeline_prompts,
         )
