@@ -1,18 +1,23 @@
 TEMPLATE:
-    "{__PROMPT_HEADER__}
+    "## Header ##
+    {__PROMPT_HEADER__}
 
-＜依頼内容＞
-作業のゴールは電子書籍の原稿が完成することです。
-完成とはcontent_elementを一意に確定するために必要な全ての情報が完備された状態です。
+## Request ##
+あなたはプロのプロンプトエンジニアかつベテランの電子書籍の編集者です。
+content_element を１回のプロンプトで出力するためのプロンプトを出力してください。
 
-プロンプトのゴールに代入して、プロンプトを実行してアウト
-プットとして成果物を作成してください。 
+そのための手続きとして以下を実行してください。
 
-アウトプットは、成果物のコンテンツのみです。 
+まず、曖昧なゴールを示します。
+曖昧なゴール： content_element を１回のプロンプトで出力するためのプロンプトを出力する
+
+曖昧なゴールからスタートして、確定されたゴールを自動探索してください。
+確定されたゴールを達成するプロンプトが最終的な成果物です。 
+最終的な成果物としてのプロンプトのみを出力してください。 
 
 Output1 Output2 Output3 Output4は表示しない。 
 
-Output1 Output2 Output3 Output4から得られる成果物をアウトプットとして出
+Output1 Output2 Output3 Output4から得られる最終的な成果物のみをアウトプットとして出
 力する。 
 
 ＝＝＝＝＝＝ 
@@ -93,8 +98,8 @@ Lang:EN
 
 
 PROMPT_DOMAIN:
-    "
-    \n\n{__DOMAIN__}."
+    "### Domain ###
+    {__DOMAIN__}"
 
 
 PROMPT_LABELS:
@@ -102,7 +107,7 @@ PROMPT_LABELS:
 
 
 PROMPT_DETAIL:
-    "
+    "## Detail ##
     {__DETAIL__}"
 
 
@@ -110,16 +115,11 @@ CHAIN_THOUGHT:
     ""
 
 ANSWER_FORMAT:
-    "＜依頼内容(リマインド)＞
-プロンプトのゴールに代入して、プロンプトを実行してアウト
-プットとして成果物を作成してください。 
+    "## Request(remind) ##
+確定されたゴールを達成するプロンプトが最終的な成果物です。 
+最終的な成果物としてのプロンプトのみを出力してください。 
 
-アウトプットは、成果物のコンテンツのみです。 
-
-Output1 Output2 Output3 Output4は表示しない。 
-
-Output1 Output2 Output3 Output4から得られる成果物をアウトプットとして出
-力する。 
+Please output all in 日本語.
     "
 
 PROMPT_HEADER:

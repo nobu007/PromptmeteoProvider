@@ -37,6 +37,7 @@ CHAIN_THOUGHT:
 ANSWER_FORMAT:
     "＜依頼内容(リマインド)＞
 １つ以上のサブテーマを作成してください。１つのサブテーマは純粋なテキスト１行です。
+Please output all in 日本語.
     "
 
 PROMPT_HEADER:

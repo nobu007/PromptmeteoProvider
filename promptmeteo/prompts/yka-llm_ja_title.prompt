@@ -38,6 +38,7 @@ CHAIN_THOUGHT:
 
 ANSWER_FORMAT:
     "最終的なタイトルだけを出力してください。
+    Please output all in 日本語.
     "
 
 PROMPT_HEADER:

@@ -1,7 +1,7 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-＜依頼内容＞
+## Request ##
 階層構造のアウトライン作成してください。
 指定されたタイトルに対して、１階層掘り下げたタイトル案のみを必要な個数だけ出力してください。
 タイトルは30文字以内です。element_typeを意識してください。
@@ -35,6 +35,7 @@ CHAIN_THOUGHT:
 
 ANSWER_FORMAT:
     "最終的なタイトルだけを出力してください。
+    Please output all in 日本語.
     "
 
 PROMPT_HEADER:

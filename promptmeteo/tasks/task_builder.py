@@ -64,6 +64,11 @@ class TaskTypes(str, Enum):
     PREREQUISITE: str = "prerequisite"
     THEMA: str = "thema"
     SUBTHEMA: str = "subthema"
+    CONCLUSION: str = "conclusion"
+    TEXT_PLAN: str = "text_plan"
+    SENTENCE_PLAN: str = "sentence_plan"
+    BEFORE: str = "before"
+    AFTER: str = "after"
 
 
 class TaskBuilder:

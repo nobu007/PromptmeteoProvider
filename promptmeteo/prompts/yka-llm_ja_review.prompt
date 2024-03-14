@@ -66,6 +66,7 @@ ANSWER_FORMAT:
     "出力の1行目に指摘概要を記載してください。
 また、修正後の「処理対象の文章」を全て出力してください。
 指摘は重要な点に絞って出力してください。
+Please output all in 日本語.
     "
 
 PROMPT_HEADER:

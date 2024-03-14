@@ -34,6 +34,7 @@ CHAIN_THOUGHT:
 
 ANSWER_FORMAT:
     "content_element としての最終的な原稿だけを出力してください。
+    Please output all in 日本語.
     "
 
 PROMPT_HEADER:

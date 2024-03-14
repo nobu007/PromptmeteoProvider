@@ -35,6 +35,7 @@ CHAIN_THOUGHT:
 ANSWER_FORMAT:
     "### ANSWER_FORMAT
 作者の思考をトレースして、content_element について、作者の意図を出力してください。
+Please output all in 日本語.
     "
 
 PROMPT_HEADER:

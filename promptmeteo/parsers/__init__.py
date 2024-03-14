@@ -59,6 +59,12 @@ class ParserTypes(str, Enum):
     PARSER_24: str = "prerequisite"
     PARSER_25: str = "thema"
     PARSER_26: str = "subthema"
+    PARSER_27: str = "conclusion"
+    PARSER_28: str = "milestone"
+    PARSER_29: str = "text_plan"
+    PARSER_30: str = "sentence_plan"
+    PARSER_31: str = "before"
+    PARSER_32: str = "after"
 
 
 class ParserFactory:
