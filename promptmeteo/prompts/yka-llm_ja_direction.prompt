@@ -2,7 +2,7 @@ TEMPLATE:
     "{__PROMPT_HEADER__}
 
 ### 依頼内容
-content_element について、作者の意図を出力してください。
+content_element に何を書くべきか、なぜ書く必要があるのかについて、作者の意図を出力してください。
 
     {__PROMPT_DOMAIN__}
     {__PROMPT_LABELS__}
@@ -14,9 +14,7 @@ content_element について、作者の意図を出力してください。
 
 
 PROMPT_DOMAIN:
-    "
-    ### DOMAIN
-    {__DOMAIN__}"
+    "{__DOMAIN__}"
 
 
 PROMPT_LABELS:
@@ -24,17 +22,14 @@ PROMPT_LABELS:
 
 
 PROMPT_DETAIL:
-    "
-    ### DETAIL
-    {__DETAIL__}"
+    "{__DETAIL__}"
 
 
 CHAIN_THOUGHT:
     "ステップバイステップで思考して結論を出してください。"
 
 ANSWER_FORMAT:
-    "### ANSWER_FORMAT
-作者の思考をトレースして、content_element について、作者の意図を出力してください。
+    "content_element に何を書くべきか、なぜ書く必要があるのかについて、作者の意図を出力してください。
 Please output all in 日本語.
     "
 
