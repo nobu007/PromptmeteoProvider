@@ -65,6 +65,7 @@ class TaskTypes(str, Enum):
     THEME: str = "theme"
     SUB_THEME: str = "sub-theme"
     CONCLUSION: str = "conclusion"
+    MILESTONE: str = "milestone"
     TEXT_PLAN: str = "text_plan"
     SENTENCE_PLAN: str = "sentence_plan"
     BEFORE: str = "before"
