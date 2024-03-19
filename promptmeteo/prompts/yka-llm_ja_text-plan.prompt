@@ -1,34 +1,54 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-＜依頼内容＞
-content_element を作成するためのプロンプトを完成させてください。
-現時点のプロンプトをgoalseekタグで示します。
-しかし単一の content_element は他の content_element との相互作用により評価されるため一意に確定できません。
+### Request ###
+下記の状態遷移シークプロンプトに従って処理して、text_planを定義してください。
 
-そこで、content_element に影響する要素を変数として分離して、変数値をプロンプトの中で明記します。
-未知の変数がなくなり、全ての変数値が確定したら作業完了です。
-そのために次のプロセスに従ってください。
+#### 変数の定義 ####
+<state_A>: 初期状態
+<state_B>: 目標状態
+<milestone_*>: 各マイルストーン（*は番号）
 
-1. まず最初に、当該 content_element についての情報を提供しますので内容を正確に理解してください。
-2. 入力に基づいて、4つのセクションを生成してください。
-a) 改訂されたプロンプト（確定した変数値をプロンプト内に明記してください。情報量が多くなるため、明確かつ簡潔に記載してください）
-b) 評価（改訂されたプロンプトの完成度(0-100)です。content_elementが一意に確定できたら100%です）
-c) 変数（ゴールを表現するために必要な未知の変数について記載してください）
-d) 質問（変数を決定するために他の content_element やコンテンツ編集者に質問してください）
+#### 前提 ####
+- <state_A>, <state_B>, <milestone_1>から<milestone_N>は決定済みとする
 
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
+#### ゴール ####
+<state_A>から<state_B>へ至る論理的な説明の設計図を作成し、`text_plan`として出力する。
 
-    {__PROMPT_DETAIL__}
+#### 手順 ####
+目標状態から逆にたどって初期状態からの説明を完成させる。
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+1. <milestone_N>から<state_B>に到達するための説明を100文字程度で作成する
+2. <milestone_N-1>から<milestone_N>に到達するための説明を100文字程度で作成する
+(省略)
+X. <state_A>から<milestone_1>に到達するための説明を100文字程度で作成する
+
+#### 出力 ####
+出力は初期状態からの状態遷移だけです。
+1. <state_A>から<milestone_1>に到達するための説明を100文字程度で作成する
+2. <milestone_2>から<milestone_3>に到達するための説明を100文字程度で作成する
+(省略)
+X. <milestone_N>から<state_B>に到達するための説明を100文字程度で作成する
+
+#### 出力サンプル ####
+
+1. 子供の質問の多さに驚き、その意味を考え始める
+2. 子供の質問の背景にある探究心に気づき、その重要性を認識する
+3. 探究心を育むために、親としてできることがあると理解する
+4. 親の働きかけによって、子供の好奇心を育成できると確信する
+
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
+
+{__PROMPT_DETAIL__}
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
 
 
 PROMPT_DOMAIN:
-    "
-    \n\n{__DOMAIN__}."
+    "{__DOMAIN__}"
 
 
 PROMPT_LABELS:
@@ -36,22 +56,16 @@ PROMPT_LABELS:
 
 
 PROMPT_DETAIL:
-    "
-    {__DETAIL__}"
+    "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "＜依頼内容(リマインド)＞
-入力に基づいて、4つのセクションを生成してください。
-a) 改訂されたプロンプト
-b) 評価
-c) 変数
-d) 質問
-Please output all in 日本語.
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"

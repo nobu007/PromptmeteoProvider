@@ -66,8 +66,8 @@ class TaskTypes(str, Enum):
     SUB_THEME: str = "sub-theme"
     CONCLUSION: str = "conclusion"
     MILESTONE: str = "milestone"
-    TEXT_PLAN: str = "text_plan"
-    SENTENCE_PLAN: str = "sentence_plan"
+    TEXT_PLAN: str = "text-plan"
+    SENTENCE_PLAN: str = "sentence-plan"
     BEFORE: str = "before"
     AFTER: str = "after"
     COMMON: str = "common"
@@ -105,6 +105,8 @@ class TaskBuilder:
         prompt_domain: str,
         prompt_labels: List[str],
         prompt_detail: str,
+        prompt_chain_thought: str,
+        prompt_answer_format: str,
         prompt_header: str = "",
     ) -> Self:
         """
@@ -120,6 +122,8 @@ class TaskBuilder:
             prompt_domain=prompt_domain,
             prompt_labels=prompt_labels,
             prompt_detail=prompt_detail,
+            prompt_chain_thought=prompt_chain_thought,
+            prompt_answer_format=prompt_answer_format,
             prompt_header=prompt_header,
         )
 

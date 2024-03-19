@@ -41,8 +41,8 @@ class BasePrompt(ABC):
             {__PROMPT_DOMAIN__}
             {__PROMPT_LABELS__}
 
-            {__CHAIN_THOUGHT__}
-            {__ANSWER_FORMAT__}"
+            {__PROMPT_CHAIN_THOUGHT__}
+            {__PROMPT_ANSWER_FORMAT__}"
 
         PROMPT_ORDER:
             "Here you define the {__ORDER__}."
@@ -60,10 +60,10 @@ class BasePrompt(ABC):
             "Here you can give some {__DETAIL__}"
 
         CHAIN_THOUGHT:
-            "Explain your answer step by step."
+            "Explain your answer as {__CHAIN_THOUGHT__}"
 
         ANSWER_FORMAT:
-            "Response just with the asnwer."
+            "Response as {__ANSWER_FORMAT__}"
             
         PROMPT_HEADER:
             "Prompt header."
@@ -76,6 +76,8 @@ class BasePrompt(ABC):
         prompt_domain: str = "",
         prompt_labels: str = "",
         prompt_detail: str = "",
+        prompt_chain_thought: str = "",
+        prompt_answer_format: str = "",
         prompt_header: str = "",
     ) -> None:
         """
@@ -87,6 +89,8 @@ class BasePrompt(ABC):
         self._prompt_domain = prompt_domain
         self._prompt_labels = prompt_labels
         self._prompt_detail = prompt_detail
+        self._prompt_chain_thought = prompt_chain_thought
+        self._prompt_answer_format = prompt_answer_format
         self._prompt_header = prompt_header
 
     @property
@@ -116,6 +120,20 @@ class BasePrompt(ABC):
     ) -> List[str]:
         """Prompt Labels."""
         return [self._prompt_labels]
+
+    @property
+    def chain_thought(
+        self,
+    ) -> str:
+        """Prompt ChainThought."""
+        return self._prompt_chain_thought
+
+    @property
+    def answer_format(
+        self,
+    ) -> str:
+        """Prompt AnswerFormat."""
+        return self._prompt_answer_format
 
     @property
     def template(
@@ -164,8 +182,10 @@ class BasePrompt(ABC):
             cls.PROMPT_DOMAIN = prompt.get("PROMPT_DOMAIN", "")
             cls.PROMPT_LABELS = prompt.get("PROMPT_LABELS", "")
             cls.PROMPT_DETAIL = prompt.get("PROMPT_DETAIL", "")
-            cls.ANSWER_FORMAT = prompt.get("ANSWER_FORMAT", "")
-            cls.CHAIN_THOUGHT = prompt.get("CHAIN_THOUGHT", "")
+            cls.PROMPT_ANSWER_FORMAT = prompt.get("PROMPT_ANSWER_FORMAT", "")
+            cls.PROMPT_CHAIN_THOUGHT = prompt.get("PROMPT_CHAIN_THOUGHT", "")
+            cls.ANSWER_FORMAT = prompt.get("ANSWER_FORMAT", "")  # direct fix str in template
+            cls.CHAIN_THOUGHT = prompt.get("CHAIN_THOUGHT", "")  # direct fix str in template
             cls.PROMPT_HEADER = prompt.get("PROMPT_HEADER", "")
 
             cls.PROMPT_EXAMPLE = prompt_text
@@ -200,9 +220,9 @@ class BasePrompt(ABC):
             "__PROCESS__": self._prompt_process,
             "__DOMAIN__": self._prompt_domain,
             "__DETAIL__": self._prompt_detail,
+            "__ANSWER_FORMAT__": self._prompt_answer_format,
+            "__CHAIN_THOUGHT__": self._prompt_chain_thought,
             "__HEADER__": self._prompt_header,
-            "__ANSWER_FORMAT__": self.ANSWER_FORMAT,
-            "__CHAIN_THOUGHT__": self.CHAIN_THOUGHT,
         }
 
         # Prompts
@@ -212,8 +232,8 @@ class BasePrompt(ABC):
             "process": self.PROMPT_PROCESS,
             "domain": self.PROMPT_DOMAIN,
             "detail": self.PROMPT_DETAIL,
-            "answer_format": self.ANSWER_FORMAT,
-            "chain_thought": self.CHAIN_THOUGHT,
+            "answer_format": self.PROMPT_ANSWER_FORMAT,
+            "chain_thought": self.PROMPT_CHAIN_THOUGHT,
             "header": self.PROMPT_HEADER,
         }
 

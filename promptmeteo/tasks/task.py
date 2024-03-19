@@ -157,11 +157,15 @@ class Task:
 
         no_examples_prompt = PromptTemplate.from_template("{__INPUT__}")
 
-        if self._language == "es":
-            no_examples_prompt = PromptTemplate.from_template("Texto de entrada: {__INPUT__}")
+        if example:
+            if self._language == "es":
+                no_examples_prompt = PromptTemplate.from_template("Texto de entrada: {__INPUT__}")
 
-        if self._language == "en":
-            no_examples_prompt = PromptTemplate.from_template("Input text: {__INPUT__}")
+            if self._language == "en":
+                no_examples_prompt = PromptTemplate.from_template("Input text: {__INPUT__}")
+
+            if self._language == "ja":
+                no_examples_prompt = PromptTemplate.from_template("Input text: {__INPUT__}")
 
         examples_prompt = self.selector.run() if self.selector else no_examples_prompt
 

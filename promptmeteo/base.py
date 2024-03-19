@@ -61,6 +61,8 @@ class Base(ABC):
         prompt_domain: Optional[str] = "",
         prompt_labels: List[str] = None,
         prompt_detail: Optional[str] = None,
+        prompt_chain_thought: Optional[str] = "",
+        prompt_answer_format: Optional[str] = "",
         prompt_header: Optional[str] = "",
         selector_k: int = 10,
         selector_algorithm: str = "relevance",
@@ -132,6 +134,8 @@ class Base(ABC):
         self.prompt_domain: Optional[str] = prompt_domain
         self.prompt_labels: List[str] = prompt_labels or []
         self.prompt_detail: Optional[str] = prompt_detail
+        self.prompt_chain_thought: Optional[str] = prompt_chain_thought
+        self.prompt_answer_format: Optional[str] = prompt_answer_format
         self.prompt_header: Optional[str] = prompt_header
         self._selector_k: int = selector_k
         self._selector_algorithm: str = selector_algorithm

@@ -90,6 +90,8 @@ class DocumentAdd(BaseSupervised):
             prompt_domain=self.prompt_domain,
             prompt_labels=self.prompt_labels,
             prompt_detail=self.prompt_detail,
+            prompt_chain_thought=self.prompt_chain_thought,
+            prompt_answer_format=self.prompt_answer_format,
             prompt_header=self.prompt_header,
         )
 

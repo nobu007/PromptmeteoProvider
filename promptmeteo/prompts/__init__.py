@@ -105,6 +105,8 @@ class PromptFactory:
         prompt_domain: str,
         prompt_labels: List[str],
         prompt_detail: str,
+        prompt_chain_thought: str,
+        prompt_answer_format: str,
         prompt_header: str,
     ):
         """
@@ -147,6 +149,8 @@ class PromptFactory:
             prompt_domain=prompt_domain,
             prompt_labels=prompt_labels,
             prompt_detail=prompt_detail,
+            prompt_chain_thought=prompt_chain_thought,
+            prompt_answer_format=prompt_answer_format,
             prompt_header=prompt_header,
         )
 
