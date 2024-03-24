@@ -191,13 +191,14 @@ class Task:
     def run(
         self,
         example: str,
+        is_smart: bool = False,
     ) -> str:
         """
         Given a text sample, return the text predicted by Promptmeteo.
         """
 
         prompt = self._get_prompt(example)
-        output = self.model.run(prompt)
+        output = self.model.run(prompt, is_smart=is_smart)
         result = self.parser.run(output)
 
         if self._verbose:

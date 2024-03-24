@@ -104,6 +104,7 @@ class YkaLLM(BaseModel):
     def run(
         self,
         sample: str,
+        is_smart: bool = False,
     ) -> str:
         """
         Executes the model LLM and return its prediction.
@@ -111,7 +112,7 @@ class YkaLLM(BaseModel):
 
         try:
             messages = [{"role": "user", "content": str(sample)}]
-            response = yka_langchain_raw(messages=messages)
+            response = yka_langchain_raw(messages=messages, is_smart=is_smart)
             return response
 
         except Exception as error:

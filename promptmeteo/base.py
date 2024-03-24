@@ -174,6 +174,7 @@ class Base(ABC):
     def predict(
         self,
         examples: List[str],
+        is_smart: bool = False,
     ) -> List[str]:
         """
         Predicts over new text samples.
@@ -206,7 +207,7 @@ class Base(ABC):
 
         results = []
         for example in examples:
-            results.append(self.task.run(example))
+            results.append(self.task.run(example, is_smart=is_smart))
 
         return results
 
