@@ -1,0 +1,62 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+#### 作業指示 ####
+
+本項の導入部分だけを読んだ想定読者の反応を設計してください。
+特に重要な論点は「読者がどのような疑問や不明点を持って本項を読み進めるのか？」です。
+
+この内容は書籍全体の整合性を調整するために利用される重要な情報です。
+厳密かつ慎重に検討作業を遂行してください。
+
+そのために次のプロセスに従ってください。
+
+{__PROMPT_PROCESS__}
+
+{__PROMPT_DOMAIN__}
+
+{__PROMPT_LABELS__}
+
+{__PROMPT_DETAIL__}
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
+
+
+PROMPT_DOMAIN:
+    "{__DOMAIN__}"
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "{__DETAIL__}"
+
+
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
+
+
+PROMPT_ANSWER_FORMAT:
+    "#### 作業指示(リマインド) ####
+本項の導入部分だけを読んだ想定読者の反応を設計してください。
+特に重要な論点は「読者がどのような疑問や不明点を持って本項を読み進めるのか？」です。
+
+{__ANSWER_FORMAT__}
+Please output all in 日本語.
+    "
+
+
+PROMPT_HEADER:
+    "{__HEADER__}"

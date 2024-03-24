@@ -70,6 +70,7 @@ class TaskTypes(str, Enum):
     SENTENCE_PLAN: str = "sentence-plan"
     BEFORE: str = "before"
     AFTER: str = "after"
+    AFTER_PROLOGUE: str = "after-prologue"
     COMMON: str = "common"
 
 
