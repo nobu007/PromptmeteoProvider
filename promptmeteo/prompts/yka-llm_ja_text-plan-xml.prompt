@@ -1,0 +1,127 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+### Request ###
+状態遷移シークプロンプトに従って処理して、output_sampleを参考にしてoutputを出力してください。
+
+<?xml version="1.0" encoding="UTF-8"?>
+<logical_explanation_design>
+  <goal>
+    <initial_state ref="A"/>から<final_state ref="B"/>へ至る論理的な説明の設計図を作成し、<explanation_plan>として出力する。
+  </goal>
+
+  <procedure>
+    <state id="A">
+      <define>
+        <domain_specific_description length="100">における初期状態を説明する</domain_specific_description>
+        <name>初期状態の名前</name>
+      </define>
+    </state>
+    <state id="B">
+      <define>
+        <domain_specific_description length="100">における目標状態を説明する</domain_specific_description>
+        <name>目標状態の名前</name>
+      </define>
+    </state>
+    <milestones>
+      <milestone id="1">
+        <name>マイルストーン1の名前</name>
+      </milestone>
+      <milestone id="2">
+        <name>マイルストーン2の名前</name>
+      </milestone>
+      <milestone id="N">
+        <name>マイルストーンNの名前</name>
+      </milestone>
+    </milestones>
+    <transitions>
+      <transition from="A" to="1">
+        <description length="100"><state ref="A"/>から<milestone ref="1"/>への遷移を説明する</description>
+      </transition>
+      <transition from="1" to="2">
+        <description length="100"><milestone ref="1"/>から<milestone ref="2"/>への遷移を説明する</description>
+      </transition>
+      <transition from="N-1" to="N">
+        <description length="100"><milestone ref="N-1"/>から<milestone ref="N"/>への遷移を説明する</description>
+      </transition>
+      <transition from="N" to="B">
+        <description length="100"><milestone ref="N"/>から<state ref="B"/>への遷移を説明する</description>
+      </transition>
+    </transitions>
+    <output>
+      <explanation_plan>状態、マイルストーン、遷移を論理的な流れに沿って出力する</explanation_plan>
+    </output>
+  </procedure>
+
+  <output_format>
+    <explanation_plan>
+      - 初期状態 <state ref="A"/>: <state_name ref="A"/>
+        - <state_description ref="A"/>
+      - 遷移 <transition from="A" to="1"/>
+      - マイルストーン <milestone ref="1"/>: <milestone_name ref="1"/>
+      - 遷移 <transition from="1" to="2"/>
+      - マイルストーン <milestone ref="2"/>: <milestone_name ref="2"/>
+      (省略)
+      - 遷移 <transition from="N-1" to="N"/>
+      - マイルストーン <milestone ref="N"/>: <milestone_name ref="N"/>
+      - 遷移 <transition from="N" to="B"/>
+      - 目標状態 <state ref="B"/>: <state_name ref="B"/>
+        - <state_description ref="B"/>
+    </explanation_plan>
+  </output_format>
+
+  <output_sample>
+    <state id="A">子供の好奇心は生まれつきのもので、変えることはできないと考えている状態</state>
+    <state_name ref="A">固定的な好奇心</state_name>
+    <state id="B">子供の好奇心は、親の関わり方によって大きく影響を受け、育むことができると理解している状態</state>
+    <state_name ref="B">育成可能な好奇心</state_name>
+    
+    <milestone id="1">子供が活発に質問をするのは、探究心の表れであると理解できている状態</milestone>
+    <milestone_name ref="1">質問の意味の理解</milestone_name>
+    <milestone id="2">子供は物事の仕組みを深く理解したいという欲求を持っていると認識できている状態</milestone>
+    <milestone_name ref="2">探究心の認識</milestone_name>
+    <milestone id="3">親が適切な働きかけを行うことで、子供の好奇心を刺激し、学びを促進できると理解している状態</milestone>
+    <milestone_name ref="3">親の役割の理解</milestone_name>
+
+    <transition from="A" to="1">子供の質問の多さに驚き、その意味を考え始める</transition>
+    <transition from="1" to="2">子供の質問の背景にある探究心に気づき、その重要性を認識する</transition>
+    <transition from="2" to="3">探究心を育むために、親としてできることがあると理解する</transition>
+    <transition from="3" to="B">親の働きかけによって、子供の好奇心を育成できると確信する</transition>
+  </output_sample>
+</logical_explanation_design>
+
+    {__PROMPT_DOMAIN__}
+    {__PROMPT_LABELS__}
+
+    {__PROMPT_DETAIL__}
+
+    {__CHAIN_THOUGHT__}
+    {__ANSWER_FORMAT__}"
+
+
+PROMPT_DOMAIN:
+    "
+    \n\n{__DOMAIN__}."
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "
+    {__DETAIL__}"
+
+
+CHAIN_THOUGHT:
+    ""
+
+ANSWER_FORMAT:
+    "#### 出力(リマインド) ####
+状態遷移シークプロンプトに従って処理して、output_sampleを参考にしてoutputを出力してください。
+
+Please output all in 日本語.
+    "
+
+PROMPT_HEADER:
+    "{__HEADER__}"
