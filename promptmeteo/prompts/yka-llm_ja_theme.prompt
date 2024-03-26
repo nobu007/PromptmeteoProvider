@@ -1,19 +1,31 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-＜依頼内容＞
+### 作業指示 ###
 テーマを作成してください。
 テーマは純粋なテキスト１行で書いてください。タグを含めないでください。
 上位 level のテーマでは element_type でclaim(主張), fact(事実), evidence(証拠), counter(反論), claim_end(主張終わり)の構造を全て含む大枠を示してください。
 下位 level のテーマでは単一の element_type に対応するテーマを書いてください。
 
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
+{__PROMPT_PROCESS__}
 
-    {__PROMPT_DETAIL__}
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+{__PROMPT_DETAIL__}
+
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
 
 
 PROMPT_DOMAIN:
@@ -25,18 +37,16 @@ PROMPT_LABELS:
 
 
 PROMPT_DETAIL:
-    "
-    {__DETAIL__}"
+    "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "＜依頼内容(リマインド)＞
-１つのテーマを作成してください。純粋なテキスト１行です。
-Please output all in 日本語.
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"

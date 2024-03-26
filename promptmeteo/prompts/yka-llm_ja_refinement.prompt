@@ -1,7 +1,7 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-＜依頼内容＞
+### 作業指示 ###
 次のような誤字脱字や漢字の変換ミスを修正してください。
 
 Before：どのようにようにやり過ごしていたのかを思うと
@@ -40,19 +40,29 @@ After：彼女は私の知らない単語をいくつも使うので
 Before：妙な高揚感を産んでいた
 After：妙な高揚感を生んでいた
 
+{__PROMPT_PROCESS__}
 
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
 
-    {__PROMPT_DETAIL__}
+{__PROMPT_DETAIL__}
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
 
 
 PROMPT_DOMAIN:
-    "＜参考資料＞
-    \n\n{__DOMAIN__}."
+    "{__DOMAIN__}"
 
 
 PROMPT_LABELS:
@@ -63,12 +73,13 @@ PROMPT_DETAIL:
     "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "最終的な原稿だけを出力してください。
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"

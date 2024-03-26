@@ -1,7 +1,7 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-＜依頼内容＞
+### 作業指示 ###
 原稿を改善するためのレビューコメントがあります。
 レビューコメントを参考にして「処理対象の文章」をリライトしてください。
 
@@ -9,18 +9,30 @@ TEMPLATE:
 修正後の原稿文章だけを出力してください。
 修正不要な場合は元の「処理対象の文章」だけを出力してください。
 
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
 
-    {__PROMPT_DETAIL__}
+{__PROMPT_PROCESS__}
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
+
+{__PROMPT_DETAIL__}
+
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
 
 
 PROMPT_DOMAIN:
-    "＜レビューコメント＞
-    \n\n{__DOMAIN__}."
+    "{__DOMAIN__}"
 
 
 PROMPT_LABELS:
@@ -28,19 +40,16 @@ PROMPT_LABELS:
 
 
 PROMPT_DETAIL:
-    "＜処理対象の文章＞
-    {__DETAIL__}"
+    "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "＜制約(リマインド)＞
-修正後の原稿文章だけを出力してください。
-それではリライトを開始してください。
-Please output all in 日本語.
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"

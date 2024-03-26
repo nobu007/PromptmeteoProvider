@@ -10,14 +10,14 @@ content_element で読者の理解がどのように変化するかの観点で�
 {__PROMPT_PROCESS__}
 
 {__PROMPT_DOMAIN__}
-
 {__PROMPT_LABELS__}
 
 {__PROMPT_DETAIL__}
 
-{__CHAIN_THOUGHT__}
 
-{__ANSWER_FORMAT__}"
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
 
 
 PROMPT_ORDER:
@@ -40,14 +40,13 @@ PROMPT_DETAIL:
     "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "#### 作業指示(リマインド) ####
-{__PROCESS__}
-Please output all in 日本語.
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"

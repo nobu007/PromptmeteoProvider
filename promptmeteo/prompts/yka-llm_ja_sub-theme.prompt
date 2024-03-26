@@ -1,21 +1,40 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-＜依頼内容＞
-テーマを適切な粒度に細分化したサブテーマを作成してください。
+### 作業指示 ###
+マイルストーンと状態遷移のプランについて検討しました。
+これを参考に本項の直下に配置するべきサブテーマ(複数)を作成してください。
+
 サブテーマは１つ以上とします。
-無限ループするのでテーマ自体を含めないでください。
+無限ループするので本項のテーマ自体を含めないでください。
+
+サブテーマは原稿全体の改善活動にとって非常に重要な役割を持っています。
+重複判断、論理構成チェック、メッセージ強弱判断などです。
+前提条件やトピック一覧や結論など多くの情報を含めてください。
+
 １つのサブテーマは純粋なテキスト１行で書いてください。タグを含めないでください。
 上位 level のサブテーマでは element_type でclaim(主張), fact(事実), evidence(証拠), counter(反論), claim_end(主張終わり)を複数含むことができます。
 下位 level のサブテーマでは単一の element_type に対応するテーマを書いてください。
 
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
+{__PROMPT_PROCESS__}
 
-    {__PROMPT_DETAIL__}
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+{__PROMPT_DETAIL__}
+
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
 
 
 PROMPT_DOMAIN:
@@ -27,23 +46,16 @@ PROMPT_LABELS:
 
 
 PROMPT_DETAIL:
-    "
-    {__DETAIL__}"
+    "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "#### ANSWER_FORMAT ####
-回答は、概要、詳細説明、具体例、注意点、参考情報の順で提示してください。
-詳細説明では、歴史的背景、特徴、現代における役割について触れてください。
-具体例では、茶道や花道など、代表的な伝統文化を取り上げてください。
-回答全体の長さは、1000語程度に収めてください。
-    ＜依頼内容(リマインド)＞
-１つ以上のサブテーマを作成してください。１つのサブテーマは純粋なテキスト１行です。
-Please output all in 日本語.
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"

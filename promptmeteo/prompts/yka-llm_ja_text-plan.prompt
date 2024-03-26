@@ -1,7 +1,7 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-### Request ###
+### 作業指示 ###
 下記の状態遷移シークプロンプトに従って処理して、text_planを定義してください。
 
 #### 変数の定義 ####
@@ -37,14 +37,25 @@ X. <milestone_N>から<state_B>に到達するための説明を100文字程度�
 3. 探究心を育むために、親としてできることがあると理解する
 4. 親の働きかけによって、子供の好奇心を育成できると確信する
 
+{__PROMPT_PROCESS__}
+
 {__PROMPT_DOMAIN__}
 {__PROMPT_LABELS__}
 
 {__PROMPT_DETAIL__}
 
+
 {__PROMPT_CHAIN_THOUGHT__}
 
 {__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
 
 
 PROMPT_DOMAIN:

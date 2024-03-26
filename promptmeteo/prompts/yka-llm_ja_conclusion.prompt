@@ -9,13 +9,25 @@ content_element の結論部分を最後まで書いてください。
 ・titleとconfusionだけで話の流れが理解できること。
 ・main_txtを全て結合した時に書籍の原稿が完成していること。
 
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
+{__PROMPT_PROCESS__}
 
-    {__PROMPT_DETAIL__}
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+{__PROMPT_DETAIL__}
+
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
 
 
 PROMPT_DOMAIN:
@@ -27,18 +39,16 @@ PROMPT_LABELS:
 
 
 PROMPT_DETAIL:
-    "
-    {__DETAIL__}"
+    "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "＜依頼内容(リマインド)＞
-content_element の結論部分を最後まで書いてください。
-Please output all in 日本語.
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"

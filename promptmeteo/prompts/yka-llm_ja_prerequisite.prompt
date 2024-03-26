@@ -1,22 +1,33 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-＜依頼内容＞
-content_element は読者の理解や認識を変化させるものです。
-変化前の読者の理解や認識について、徹底的に明確に定義してください。
+### 作業指示 ###
+content_element の内容を成立させるための前提条件や前提知識について整理してください。
+そして、想定読者にとって分かりやすい内容となっているか検討してください。
+
+{__PROMPT_PROCESS__}
+
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
+
+{__PROMPT_DETAIL__}
 
 
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
+{__PROMPT_CHAIN_THOUGHT__}
 
-    {__PROMPT_DETAIL__}
+{__PROMPT_ANSWER_FORMAT__}"
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
 
 
 PROMPT_DOMAIN:
-    "{__DOMAIN__}."
+    "{__DOMAIN__}"
 
 
 PROMPT_LABELS:
@@ -27,13 +38,12 @@ PROMPT_DETAIL:
     "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "変化前の読者の理解や認識を箇条書きで出力してください。
-    Please output all in 日本語.
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
 
 
 PROMPT_HEADER:

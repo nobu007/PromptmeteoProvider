@@ -72,6 +72,7 @@ class TaskTypes(str, Enum):
     AFTER: str = "after"
     AFTER_PROLOGUE: str = "after-prologue"
     COMMON: str = "common"
+    FIGURE: str = "figure"
 
 
 class TaskBuilder:

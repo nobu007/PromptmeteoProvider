@@ -1,0 +1,74 @@
+TEMPLATE:
+    "{__PROMPT_HEADER__}
+
+### 作業指示 ###
+コマンド操作でテキストダイアグラムを出力するツールのMermaid CLIを使って画像を作りたいです。
+本項の内容をシンプルなインフォグラフィックにしてください。
+グラフはフロー図を使い、次のような構成にしてください。
+
+本項がclaimの場合は、親のclaimまたは書籍タイトルから当該claimに矢印を引き、さらにclaimの主要要素に矢印を引きます。
+本項がfactの場合は、親のclaimから当該factに矢印を引き、さらにfactの主要要素に矢印を引きます。
+本項がevidenceの場合は、親または関連するfactからevidenceに矢印を引き、さらにevidenceの主要要素に矢印を引きます。
+本項がcounterの場合は、親のclaimまたはfactから当該counterに矢印を引き、さらにcounterの主要要素に矢印を引きます。
+本項がclaim_endの場合は、議論を総括する意味で親のclaimからfactとevidenceとcounterに矢印を引きます。その他に主要な要素があれば追加してください。
+
+＜サンプル＞
+flowchart TD
+    A[Christmas] -->|Get money| B(Go shopping)
+    B -->C
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[fa:fa-car Car]
+    
+＜注意点＞
+mmdファイルに記載するべき内容だけを出力してください。
+1行目は「flowchart TD」や「graph LR」などで始まる必要があります。
+特殊文字は使わないでください。
+
+グラフ内の文字列はなるべく短くしてください。
+分かりやすさ重視で作ってください。
+装飾は不要なのでシンプルに間違いなく作ってください。
+
+{__PROMPT_PROCESS__}
+
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
+
+{__PROMPT_DETAIL__}
+
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
+
+
+PROMPT_DOMAIN:
+    "{__DOMAIN__}"
+
+
+PROMPT_LABELS:
+    "{__LABELS__}"
+
+
+PROMPT_DETAIL:
+    "{__DETAIL__}"
+
+
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
+
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
+
+PROMPT_HEADER:
+    "{__HEADER__}"

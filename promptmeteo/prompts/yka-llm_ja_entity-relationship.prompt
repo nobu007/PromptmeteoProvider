@@ -1,49 +1,57 @@
 TEMPLATE:
     "
-You are a professional writer specializing in text summarization. Make a short, one-sentence summary of the chunk of the text provided by the user. 
-The summary should reflect the main idea and the most important relationships of the text.
-Notice that the user has annotated the text with entities and relationships. 
-Each entity is annotated with a unique id in the format of [Artificial Intelligence ($N1)]. 
-Each relationship is annotated in the format of [has the ability to ($L, $N1, $N10; $H, $N1, $N11)], where $L or $H is the saliency of the relationship, 
-and $N1, $N10, and $N11 are the ids of the entities that the relationship connects. One annotated relationship may connect multiple pairs of entities, and they are 
-separated by semicolons in the annotation. 
+あなたは文章要約を専門とするプロのライターです。ユーザーから提供されたテキストの部分を、短い1文で要約してください。
+要約は、テキストの主旨と最も重要な関係性を反映したものにしてください。
+ユーザーがテキストにエンティティと関係性を注釈付けしていることに注意してください。
+各エンティティには、[人工知能 ($N1)] の形式で一意のIDが付けられています。
+各関係性は、[能力がある ($L, $N1, $N10; $H, $N1, $N11)] の形式で注釈付けされており、$L または $H は関係性の顕著性を表し、
+$N1, $N10, $N11 は関係性が接続しているエンティティのIDです。1つの注釈付けされた関係性は、複数のエンティティのペアを接続することができ、
+注釈内ではセミコロンで区切られています。
 
-When summarizing the text, annotate the summarization with a consistent style for the entities and relationships. 
-Please only use the entity ids that are mentioned in the original text, and match the ids in the original text and summarization if they are the same entity. 
-Your summary should only include high saliency relationships ($H) to reflect the most important ideas in the paragraph. 
+テキストを要約する際は、エンティティと関係性に一貫したスタイルで注釈を付けてください。
+元のテキストで言及されているエンティティIDのみを使用し、元のテキストと要約で同じエンティティである場合はIDを一致させてください。
+要約には、段落の中で最も重要なアイデアを反映するために、高い顕著性の関係性 ($H) のみを含めてください。
 
-You can arrange the sentences in the summarization in a way that facilitates the annotation of entities and relationships, 
-but the arrangement should not alter their meaning and they should still flow naturally in language. 
+要約文の文章は、エンティティと関係性の注釈を容易にするように配置することができますが、
+配置によって意味が変わることはなく、自然な言語の流れを維持する必要があります。
 
-The user may make mistakes in the annotation that there might be some entities that are not connected by any relationships, 
-or some relationships that are trying to connect entities that are not mentioned in the text. Please avoid these mistakes when 
-annotating the summary. Your summary should have only one short sentence.
+ユーザーは注釈付けの際にミスをする可能性があり、どの関係性にも接続されていないエンティティや、
+テキストに言及されていないエンティティを接続しようとしている関係性がある可能性があります。要約に注釈を付ける際は、
+このようなミスを避けてください。要約は短い1文のみにしてください。
 
-Do not include anything else in the response other than the annotated, summarized text. For example, for paragraph:
+注釈付けされた要約テキスト以外は、回答に含めないでください。例えば、次のような段落の場合、
 
-[Human-Computer Interaction ($N1)] [is a ($H, $N1, $N2)] [multidisciplinary field ($N2)] that [focuses on ($H, $N1, $N3)] [the design and use of computer technology ($N3)], 
-[centered around ($H, $N1, $N4)] [the interfaces ($N4)] [between ($H, $N4, $N5; $H, $N4, $N6)] [people (users) ($N5)] and [computers ($N6)]. 
-[Researchers ($N7)] [working on $($L, $N1, $N7)] [HCI ($N1)] [study ($H, $N7, $N8)] [issues ($N8)] 
-[related to ($L, $N8, $N9; $L, $N8, $N10; $L, $N8, $N11)] 
-[usability ($N9)], 
-[accessibility ($N10)], 
-and [user experience ($N11)] [in ($L, $N9, $N3; $L, $N10, $N3; $L, $N11, $N3)] [technology design ($N3)].
+[ヒューマンコンピュータインタラクション ($N1)] [は ($H, $N1, $N2)] [学際的な分野 ($N2)] であり、[コンピュータ技術の設計と利用 ($N3)] [に焦点を当て ($H, $N1, $N3)]、
+[インターフェース ($N4)] [を中心に ($H, $N1, $N4)]、[ユーザー ($N5)] と [コンピュータ ($N6)] [の間を ($H, $N4, $N5; $H, $N4, $N6)] [つなぐものです]。
+[HCI ($N1)] [の研究者 ($N7)] [は ($L, $N1, $N7)]、[ユーザビリティ ($N9)]、[アクセシビリティ ($N10)]、[ユーザーエクスペリエンス ($N11)]
+[に関連する ($L, $N8, $N9; $L, $N8, $N10; $L, $N8, $N11)] [課題 ($N8)] [を ($H, $N7, $N8)]、[技術設計 ($N3)] [における ($L, $N9, $N3; $L, $N10, $N3; $L, $N11, $N3)] [研究しています]。
 
-You may summarize it as:
+このように要約することができます。
 
-[HCI ($N1)] [is a ($H, $N1, $N2)] [multidisciplinary field ($N2)] that [centered around ($H, $N1, $N4)] 
-[the interfaces ($N4)] [between ($H, $N4, $N5; $H, $N4, $N6)] [users ($N5)] and [computers ($N6)].
+[HCI ($N1)] [は ($H, $N1, $N2)] [学際的な分野 ($N2)] であり、[ユーザー ($N5)] と [コンピュータ ($N6)] [の間の ($H, $N4, $N5; $H, $N4, $N6)]
+[インターフェース ($N4)] [を中心に ($H, $N1, $N4)] [しています]。
 
 Please summarize the following text in 日本語 entity and relationship format:
 
+{__PROMPT_PROCESS__}
 
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
 
-    {__PROMPT_DETAIL__}
+{__PROMPT_DETAIL__}
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
 
 
 PROMPT_DOMAIN:
@@ -55,14 +63,16 @@ PROMPT_LABELS:
 
 
 PROMPT_DETAIL:
-    ""
+    "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    ""
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"

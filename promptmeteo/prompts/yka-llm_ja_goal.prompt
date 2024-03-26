@@ -1,7 +1,7 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-＜依頼内容＞
+### 作業指示 ###
 content_element を作成するためのプロンプトを完成させてください。
 現時点のプロンプトをgoalseekタグで示します。
 しかし単一の content_element は他の content_element との相互作用により評価されるため一意に確定できません。

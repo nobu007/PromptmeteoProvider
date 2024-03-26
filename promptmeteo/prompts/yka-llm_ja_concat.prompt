@@ -6,19 +6,25 @@ TEMPLATE:
 あなたの仕事は、ユーザーが提供した文書コンテンツを洗練および改善し、高度なコピー編集技術と提案を提供して、テキスト全体の品質を向上させることです。
 そのために次のプロセスに従ってください。
 
-    {__PROMPT_PROCESS__}
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
+{__PROMPT_PROCESS__}
 
-    {__PROMPT_DETAIL__}
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+{__PROMPT_DETAIL__}
+
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
 
 
 PROMPT_PROCESS:
-    "
-1. コンテンツを注意深く読み、文法、句読点、スペル、構文、スタイルの点で改善が必要な領域を特定します。
+    "1. コンテンツを注意深く読み、文法、句読点、スペル、構文、スタイルの点で改善が必要な領域を特定します。
 
 2. テキストを改良するための具体的で実行可能な提案を提供し、各提案の背後にある理論的根拠を説明します。
 
@@ -47,14 +53,14 @@ PROMPT_DETAIL:
     "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "＜依頼内容(リマインド)＞
-すべての提案を考慮して完全に編集されたバージョンを<final></final>タグで囲って出力します。
-Please output all in 日本語.
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"
+

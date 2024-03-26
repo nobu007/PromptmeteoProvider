@@ -1,6 +1,7 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
-＜依頼内容＞
+
+### 作業指示 ###
 電子書籍の原稿を執筆しています。
 「処理対象の文章」を200～400文字になるように大幅に加筆してください。
 
@@ -20,36 +21,46 @@ TEMPLATE:
 <children></children>で囲まれたものは処理対象に続く文章です。
 同じく矛盾や重複や説明の不自然さに注意です。
 
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
+{__PROMPT_PROCESS__}
 
-    {__PROMPT_DETAIL__}
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+{__PROMPT_DETAIL__}
+
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
 
 
 PROMPT_DOMAIN:
-    "＜参考資料＞
-    \n\n{__DOMAIN__}."
+    "{__DOMAIN__}"
 
 
 PROMPT_LABELS:
-    ""
+    "{__LABELS__}"
 
 
 PROMPT_DETAIL:
-    ""
+    "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "＜依頼内容(リマインド)＞
-{__PROCESS__}
-Please output all in 日本語.
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"

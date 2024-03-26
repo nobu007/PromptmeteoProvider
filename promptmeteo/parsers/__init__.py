@@ -67,6 +67,7 @@ class ParserTypes(str, Enum):
     PARSER_32: str = "after"
     PARSER_33: str = "after-prologue"
     PARSER_34: str = "common"
+    PARSER_35: str = "figure"
 
 
 class ParserFactory:

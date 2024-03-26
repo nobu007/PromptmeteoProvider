@@ -1,7 +1,7 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-＜依頼内容＞
+### 作業指示 ###
 原稿の内容に合致したタイトルを回答してください。
 ・文字数は30文字以内
 ・原稿の内容をより多く説明する
@@ -11,14 +11,25 @@ TEMPLATE:
 　反論： ～？
 　再主張： ～！！
 
+{__PROMPT_PROCESS__}
 
-    {__PROMPT_DOMAIN__}
-    {__PROMPT_LABELS__}
+{__PROMPT_DOMAIN__}
+{__PROMPT_LABELS__}
 
-    {__PROMPT_DETAIL__}
+{__PROMPT_DETAIL__}
 
-    {__CHAIN_THOUGHT__}
-    {__ANSWER_FORMAT__}"
+
+{__PROMPT_CHAIN_THOUGHT__}
+
+{__PROMPT_ANSWER_FORMAT__}"
+
+
+PROMPT_ORDER:
+    "{__ORDER__}"
+
+
+PROMPT_PROCESS:
+    "{__PROCESS__}"
 
 
 PROMPT_DOMAIN:
@@ -33,13 +44,13 @@ PROMPT_DETAIL:
     "{__DETAIL__}"
 
 
-CHAIN_THOUGHT:
-    ""
+PROMPT_CHAIN_THOUGHT:
+    "{__CHAIN_THOUGHT__}"
 
-ANSWER_FORMAT:
-    "最終的なタイトルだけを出力してください。
-    Please output all in 日本語.
-    "
+
+PROMPT_ANSWER_FORMAT:
+    "{__ANSWER_FORMAT__}"
+
 
 PROMPT_HEADER:
     "{__HEADER__}"

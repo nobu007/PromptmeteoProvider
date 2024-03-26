@@ -1,7 +1,7 @@
 TEMPLATE:
     "{__PROMPT_HEADER__}
 
-### Request ###
+### 作業指示 ###
 状態遷移シークプロンプトに従って処理して、output_sampleを参考にしてoutputを出力してください。
 
 <?xml version="1.0" encoding="UTF-8"?>
