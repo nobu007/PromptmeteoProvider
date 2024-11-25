@@ -27,9 +27,7 @@ class TestDocumentClassifier:
 
         assert model
         assert model.is_trained
-        assert model.prompt_labels == list(
-            set(["positive", "neutral", "negative"])
-        )
+        assert model.prompt_labels == list(set(["positive", "neutral", "negative"]))
 
     def test_predict_with_train(self):
         """
@@ -70,8 +68,8 @@ class TestDocumentClassifier:
             assert os.path.exists(os.path.join(tmp, "model.meteo"))
             tar = tarfile.open(os.path.join(tmp, "model.meteo"), "r:gz")
             items = [t.path for t in list(tar)]
-            assert 'model.meteo' in items
-            assert 'model.init' in items
+            assert "model.meteo" in items
+            assert "model.init" in items
 
     def test_load_model(self):
         model = DocumentClassifier(

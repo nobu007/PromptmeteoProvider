@@ -107,7 +107,9 @@ class DocumentClassifier(BaseSupervised):
     ) -> Self:
         """ """
 
-        super(DocumentClassifier, self).train(examples=examples, annotations=annotations)
+        super(DocumentClassifier, self).train(
+            examples=examples, annotations=annotations
+        )
 
         if not self.prompt_labels:
             self.prompt_labels = list(set(annotations))

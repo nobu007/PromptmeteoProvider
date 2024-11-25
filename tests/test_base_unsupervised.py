@@ -53,7 +53,8 @@ class TestBaseUnsupervised:
             )
 
             assert error.value.args[0] == (
-                f"BaseUnsupervised can not be inicializated with " f"the argument `prompt_labels`."
+                f"BaseUnsupervised can not be inicializated with "
+                f"the argument `prompt_labels`."
             )
 
     def test_wrong_predict(self):
@@ -129,7 +130,8 @@ class TestBaseUnsupervised:
             )
 
             assert error.value.args[0] == (
-                f"TypeError: BaseUnsupervised.train() got an unexpected " f"keyword argument 'annotations'"
+                f"TypeError: BaseUnsupervised.train() got an unexpected "
+                f"keyword argument 'annotations'"
             )
 
     def test_load_model(self):
@@ -155,7 +157,8 @@ class TestBaseUnsupervised:
             model_dir = "WRONG_DIR_PATH"
             model.load_model(os.path.join(model_dir, "model.meteo"))
             assert error.value.args[0] == (
-                f"{model.__class__.__name__} error in `load_model()`. " f"directory {model_dir} does not exists."
+                f"{model.__class__.__name__} error in `load_model()`. "
+                f"directory {model_dir} does not exists."
             )
 
     def test_save_model(self):
@@ -193,5 +196,6 @@ class TestBaseUnsupervised:
             model_dir = "WRONG_DIR_PATH"
             model.save_model(os.path.join(model_dir, "model.meteo"))
             assert error.value.args[0] == (
-                f"{model.__class__.__name__} error in `save_model()`. " f"directory {model_dir} does not exists."
+                f"{model.__class__.__name__} error in `save_model()`. "
+                f"directory {model_dir} does not exists."
             )

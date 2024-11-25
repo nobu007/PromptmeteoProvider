@@ -62,9 +62,7 @@ class TestSelectors:
 
             assert selector.selector is not None
 
-            selector.train(
-                examples=["TEST_EXAMPLE"], annotations=["TEST_ANNOTATION"]
-            )
+            selector.train(examples=["TEST_EXAMPLE"], annotations=["TEST_ANNOTATION"])
 
             assert (
                 selector.template
@@ -73,9 +71,5 @@ class TestSelectors:
                 RESPUESTA: TEST_ANNOTATION
 
                 EJEMPLO: {__INPUT__}
-                RESPUESTA: """.replace(
-                    " " * 4, ""
-                )[
-                    1:
-                ]
+                RESPUESTA: """.replace(" " * 4, "")[1:]
             )

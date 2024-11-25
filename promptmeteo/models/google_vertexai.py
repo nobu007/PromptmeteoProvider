@@ -31,7 +31,6 @@ from .base import BaseModel
 
 
 class ModelTypes(str, Enum):
-
     """
     Enum of available model types.
     """
@@ -55,13 +54,11 @@ class ModelTypes(str, Enum):
 
 
 class ModelParams(Enum):
-
     """
     Model Parameters.
     """
 
     class TextBison001:
-
         """
         Default parameters for text-bison model.
         """
@@ -70,7 +67,6 @@ class ModelParams(Enum):
         model_kwargs = {"temperature": 0.4, "max_tokens": 256, "max_retries": 3}
 
     class TextBison:
-
         """
         Default parameters for text-bison model in their lastest version
         """
@@ -79,7 +75,6 @@ class ModelParams(Enum):
         model_kwargs = {"temperature": 0.4, "max_tokens": 256, "max_retries": 3}
 
     class TextBison32k:
-
         """
         Default parameters for text-bison-32 model in their lastest version
         """
@@ -89,7 +84,6 @@ class ModelParams(Enum):
 
 
 class GoogleVertexAILLM(BaseModel):
-
     """
     Google VertexAI LLM model.
     """
@@ -115,8 +109,7 @@ class GoogleVertexAILLM(BaseModel):
 
         self._llm = VertexAI(
             model_name=model_name,
-            project=model_provider_project
-            or os.environ.get("GOOGLE_CLOUD_PROJECT_ID"),
+            project=model_provider_project or os.environ.get("GOOGLE_CLOUD_PROJECT_ID"),
         )
 
         self._embeddings = VertexAIEmbeddings()

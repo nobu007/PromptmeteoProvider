@@ -45,13 +45,9 @@ def add_docstring_from(parent_function):
     """
 
     def decorator(inherit_function):
-        parent_docstring = (
-            parent_function.__doc__ if parent_function.__doc__ else ""
-        )
+        parent_docstring = parent_function.__doc__ if parent_function.__doc__ else ""
 
-        inherit_docstring = (
-            inherit_function.__doc__ if inherit_function.__doc__ else ""
-        )
+        inherit_docstring = inherit_function.__doc__ if inherit_function.__doc__ else ""
 
         inherit_function.__doc__ = parent_docstring + "\n" + inherit_docstring
 

@@ -184,8 +184,12 @@ class BasePrompt(ABC):
             cls.PROMPT_DETAIL = prompt.get("PROMPT_DETAIL", "")
             cls.PROMPT_ANSWER_FORMAT = prompt.get("PROMPT_ANSWER_FORMAT", "")
             cls.PROMPT_CHAIN_THOUGHT = prompt.get("PROMPT_CHAIN_THOUGHT", "")
-            cls.ANSWER_FORMAT = prompt.get("ANSWER_FORMAT", "")  # direct fix str in template
-            cls.CHAIN_THOUGHT = prompt.get("CHAIN_THOUGHT", "")  # direct fix str in template
+            cls.ANSWER_FORMAT = prompt.get(
+                "ANSWER_FORMAT", ""
+            )  # direct fix str in template
+            cls.CHAIN_THOUGHT = prompt.get(
+                "CHAIN_THOUGHT", ""
+            )  # direct fix str in template
             cls.PROMPT_HEADER = prompt.get("PROMPT_HEADER", "")
 
             cls.PROMPT_EXAMPLE = prompt_text
@@ -207,7 +211,9 @@ class BasePrompt(ABC):
             return "\n - ".join([""] + value) if isinstance(value, list) else value
 
         def format_prompt(template, variables):
-            formatted_variables = {k: format_variable(v) for k, v in variables.items() if v}
+            formatted_variables = {
+                k: format_variable(v) for k, v in variables.items() if v
+            }
             try:
                 return template.format(**formatted_variables) if template else ""
             except KeyError:
@@ -249,11 +255,15 @@ class BasePrompt(ABC):
             [
                 (
                     "__ANSWER_FORMAT__",
-                    PromptTemplate.from_template(format_prompt(self.ANSWER_FORMAT, variables)),
+                    PromptTemplate.from_template(
+                        format_prompt(self.ANSWER_FORMAT, variables)
+                    ),
                 ),
                 (
                     "__CHAIN_THOUGHT__",
-                    PromptTemplate.from_template(format_prompt(self.CHAIN_THOUGHT, variables)),
+                    PromptTemplate.from_template(
+                        format_prompt(self.CHAIN_THOUGHT, variables)
+                    ),
                 ),
             ]
         )

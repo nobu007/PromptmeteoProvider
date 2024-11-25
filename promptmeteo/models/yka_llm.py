@@ -12,7 +12,9 @@ from .base import BaseModel
 COMMON_MOD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../common"))
 sys.path.append(COMMON_MOD_DIR)
 
-LIB_DECORATOR_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "lib/document_decorator"))
+LIB_DECORATOR_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "lib/document_decorator")
+)
 sys.path.append(LIB_DECORATOR_DIR)
 
 from yka_langchain import yka_langchain_raw
@@ -89,7 +91,8 @@ class YkaLLM(BaseModel):
 
         if not ModelTypes.has_value(model_name):
             raise ValueError(
-                f"`model_name`={model_name} not in supported model names: " f"{[i.name for i in ModelTypes]}"
+                f"`model_name`={model_name} not in supported model names: "
+                f"{[i.name for i in ModelTypes]}"
             )
         super(YkaLLM, self).__init__()
 

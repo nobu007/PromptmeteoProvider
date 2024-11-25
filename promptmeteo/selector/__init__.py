@@ -33,7 +33,6 @@ from .base import BaseSelectorUnsupervised
 
 
 class SelectorTypes(str, Enum):
-
     """
     Enum with the avaialable selector types.
     """
@@ -43,7 +42,6 @@ class SelectorTypes(str, Enum):
 
 
 class SelectorFactory:
-
     """
     Factory of Selectors
     """

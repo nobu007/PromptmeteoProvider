@@ -33,7 +33,6 @@ from .yka_llm import YkaLLM
 
 
 class ModelProvider(str, Enum):
-
     """
     LLM providers currently supported by Promptmeteo
     """
@@ -47,7 +46,6 @@ class ModelProvider(str, Enum):
 
 
 class ModelFactory:
-
     """
     The ModelFactory class is used to create a BaseModel object from the given
     configuration.

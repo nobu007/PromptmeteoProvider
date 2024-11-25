@@ -159,13 +159,19 @@ class Task:
 
         if example:
             if self._language == "es":
-                no_examples_prompt = PromptTemplate.from_template("Texto de entrada: {__INPUT__}")
+                no_examples_prompt = PromptTemplate.from_template(
+                    "Texto de entrada: {__INPUT__}"
+                )
 
             if self._language == "en":
-                no_examples_prompt = PromptTemplate.from_template("Input text: {__INPUT__}")
+                no_examples_prompt = PromptTemplate.from_template(
+                    "Input text: {__INPUT__}"
+                )
 
             if self._language == "ja":
-                no_examples_prompt = PromptTemplate.from_template("Input text: {__INPUT__}")
+                no_examples_prompt = PromptTemplate.from_template(
+                    "Input text: {__INPUT__}"
+                )
 
         examples_prompt = self.selector.run() if self.selector else no_examples_prompt
 
@@ -175,9 +181,7 @@ class Task:
                 {__INSTRUCTION__}
 
                 {__EXAMPLES__}
-                """.replace(
-                    " " * 4, ""
-                )
+                """.replace(" " * 4, "")
                 .replace("\n\n", "|")
                 .replace("\n", " ")
                 .replace("|", "\n\n")

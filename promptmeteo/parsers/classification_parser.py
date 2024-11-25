@@ -26,7 +26,6 @@ from .base import BaseParser
 
 
 class ClassificationParser(BaseParser):
-
     """
     Parser for the classification task.
     """
@@ -42,9 +41,7 @@ class ClassificationParser(BaseParser):
 
         text = self._preprocess(text)
 
-        result = [
-            label for label in self._labels if label.lower() in text.split()
-        ]
+        result = [label for label in self._labels if label.lower() in text.split()]
 
         return result if result else [""]
 
@@ -59,8 +56,5 @@ class ClassificationParser(BaseParser):
         """
 
         return " ".join(
-            text.lower()
-            .replace("\n", " ")
-            .strip()
-            .split(self._labels_separator)
+            text.lower().replace("\n", " ").strip().split(self._labels_separator)
         )

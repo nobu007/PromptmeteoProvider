@@ -32,7 +32,6 @@ from .base import BaseModel
 
 
 class ModelTypes(str, Enum):
-
     """
     Enum of available model types.
     """
@@ -52,13 +51,11 @@ class ModelTypes(str, Enum):
 
 
 class ModelParams(Enum):
-
     """
     Model Parameters.
     """
 
     class TextDavinci003:
-
         """
         Default parameters for TextDavinci003 model.
         """
@@ -68,7 +65,6 @@ class ModelParams(Enum):
 
 
 class OpenAILLM(BaseModel):
-
     """
     OpenAI LLM model.
     """

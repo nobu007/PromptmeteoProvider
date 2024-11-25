@@ -42,7 +42,6 @@ from langchain.prompts.example_selector import (
 
 
 class SelectorAlgorithms(str, Enum):
-
     """
     Enum with the avaialable selector algorithms.
     """
@@ -52,7 +51,6 @@ class SelectorAlgorithms(str, Enum):
 
 
 class BaseSelector(ABC):
-
     """
     Base Selector Interface
     """

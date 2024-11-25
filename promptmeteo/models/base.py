@@ -61,4 +61,6 @@ class BaseModel(ABC):
             return self._llm(prompt=sample, is_smart=is_smart)
 
         except Exception as error:
-            raise RuntimeError(f'Error generating from LLM: with sample "{sample}"') from error
+            raise RuntimeError(
+                f'Error generating from LLM: with sample "{sample}"'
+            ) from error

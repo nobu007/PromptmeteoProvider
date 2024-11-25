@@ -27,9 +27,7 @@ class TestCodeGenerator:
 
                 Args:        foo (str): The value to be printed.
                 """
-                print(foo)'''.replace(
-                    " " * 16, ""
-                )
+                print(foo)'''.replace(" " * 16, "")
             ],
         )
 
@@ -58,9 +56,7 @@ class TestCodeGenerator:
 
                 Args:        foo (str): The value to be printed.
                 """
-                print(foo)'''.replace(
-                    " " * 16, ""
-                )
+                print(foo)'''.replace(" " * 16, "")
             ],
         )
 
@@ -85,9 +81,7 @@ class TestCodeGenerator:
 
                 Args:        foo (str): The value to be printed.
                 """
-                print(foo)'''.replace(
-                    " " * 16, ""
-                )
+                print(foo)'''.replace(" " * 16, "")
             ],
         )
 
@@ -110,9 +104,7 @@ class TestCodeGenerator:
 
                 Args:        foo (str): The value to be printed.
                 """
-                print(foo)'''.replace(
-                    " " * 16, ""
-                )
+                print(foo)'''.replace(" " * 16, "")
             ],
         )
 

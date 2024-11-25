@@ -250,7 +250,8 @@ class Base(ABC):
 
         if model_dir != "" and not os.path.exists(model_dir):
             raise ValueError(
-                f"{self.__class__.__name__} error in `save_model()`. " f"directory {model_dir} does not exists."
+                f"{self.__class__.__name__} error in `save_model()`. "
+                f"directory {model_dir} does not exists."
             )
 
         with tempfile.TemporaryDirectory() as tmp:
@@ -299,7 +300,10 @@ class Base(ABC):
             )
 
         if not os.path.exists(model_path):
-            raise ValueError(f"{cls.__name__} error in `load_model()`. " f"directory {model_dir} does not exists.")
+            raise ValueError(
+                f"{cls.__name__} error in `load_model()`. "
+                f"directory {model_dir} does not exists."
+            )
 
         with tempfile.TemporaryDirectory() as tmp:
             with tarfile.open(model_path, "r:gz") as tar:
@@ -421,7 +425,8 @@ class BaseUnsupervised(Base):
     ) -> None:
         if "prompt_labels" in kwargs:
             raise ValueError(
-                f"{self.__class__.__name__} can not be inicializated with the " f"argument `prompt_labels`."
+                f"{self.__class__.__name__} can not be inicializated with the "
+                f"argument `prompt_labels`."
             )
 
         super(BaseUnsupervised, self).__init__(**kwargs)
